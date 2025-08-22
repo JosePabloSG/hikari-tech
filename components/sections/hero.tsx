@@ -45,13 +45,14 @@ export default function Hero() {
   }, [displayText, isTyping, currentTextIndex])
 
   return (
-    <section className="container mx-auto px-4 py-16 lg:py-24">
+    <section id="hero" className="container mx-auto px-4 py-16 lg:py-24">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         {/* Left Side - Text Content */}
         <div className="space-y-8">
           <div className="space-y-6">
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium font-inter">
-              🚀 Innovación Tecnológica en Costa Rica
+              <Rocket className="w-4 h-4 text-primary mr-2" />
+               Innovación Tecnológica en Costa Rica
             </div>
 
             <h1 className="text-4xl lg:text-6xl font-bold font-poppins text-foreground leading-tight">
@@ -76,7 +77,13 @@ export default function Hero() {
             <Button
               variant="outline"
               size="lg"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-inter font-medium px-8 py-3 rounded-lg transition-all duration-300 bg-transparent"
+              className="border-primary cursor-pointer text-primary hover:bg-primary hover:text-primary-foreground font-inter font-medium px-8 py-3 rounded-lg transition-all duration-300 bg-transparent"
+              onClick={() => {
+                const ctaSection = document.getElementById('contacto');
+                if (ctaSection) {
+                  ctaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
             >
               Conversemos sobre tus Necesidades
             </Button>

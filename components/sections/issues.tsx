@@ -26,7 +26,7 @@ const problems = [
 
 export default function Issues() {
   return (
-    <section className="py-16 lg:py-24 pb-32 bg-muted/30 relative overflow-hidden">
+    <section id="issues" className="py-16 lg:py-24 pb-32 bg-muted/30 relative overflow-hidden">
       <GridPattern size={60} opacity={0.4} />
       <div className="container mx-auto px-4 relative z-10">
         <SectionHeader

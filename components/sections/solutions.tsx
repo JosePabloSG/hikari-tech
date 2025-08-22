@@ -26,7 +26,7 @@ const solutions = [
 
 export default function Solutions() {
   return (
-    <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
+    <section id="solutions" className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
       <GridPattern size={60} opacity={0.35} />
       <div className="container mx-auto px-4 relative z-10">
         <SectionHeader

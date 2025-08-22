@@ -1,12 +1,12 @@
-import { Hero, Issues, Solutions } from "@/components/sections";
-import About from "@/components/sections/about";
-import CTA from "@/components/sections/cta";
-import WorkFlow from "@/components/sections/work-flow";
+import { Hero, Issues, Solutions, About, WorkFlow, CTA, Footer } from "@/components/sections";
+import Navbar from "@/components/sections/navbar";
+import BackToTopButton from "@/components/sections/back-to-top-button";
 import { Separator } from "@radix-ui/react-separator";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
+      <Navbar />
       <Hero />
       <Separator />
       <Issues />
@@ -18,6 +18,8 @@ export default function Home() {
       <About />
       <Separator />
       <CTA />
+      <Footer />
+      <BackToTopButton />
     </main>
   );
 }

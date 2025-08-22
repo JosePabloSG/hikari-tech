@@ -12,7 +12,7 @@ export default function CTA() {
   const { register, formState: { errors } } = form;
 
   return (
-    <section className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="contacto" className="py-20 lg:py-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         {/* Removed orange blur circles for cleaner look */}
@@ -66,7 +66,7 @@ export default function CTA() {
                   type="submit"
                   size="lg"
                   disabled={isSubmitting || !formState.isValid}
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-inter font-semibold py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl pulse-glow group relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full cursor-pointer bg-primary hover:bg-primary/90 text-primary-foreground font-inter font-semibold py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl pulse-glow group relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-3">
                     <MessageCircle className="w-5 h-5" />
