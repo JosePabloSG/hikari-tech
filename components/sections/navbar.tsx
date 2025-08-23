@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Menu, X, ArrowRight } from "lucide-react";
 import useStore from "@/store";
+import type { StoreState } from "@/store/use-store";
 
 const navItems = [
   { name: "Inicio", href: "#hero" },
@@ -19,9 +20,9 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   // removed local mobile menu state to rely solely on global store
   const [activeSection, setActiveSection] = useState("hero");
-  const setMobileMenuOpen = useStore((s: any) => s.setMobileMenuOpen);
-  const isMobileMenuOpen = useStore((s: any) => s.isMobileMenuOpen);
-  const toggleMobileMenu = useStore((s: any) => s.toggleMobileMenu);
+  const setMobileMenuOpen = useStore((s: StoreState) => s.setMobileMenuOpen);
+  const isMobileMenuOpen = useStore((s: StoreState) => s.isMobileMenuOpen);
+  const toggleMobileMenu = useStore((s: StoreState) => s.toggleMobileMenu);
 
   // Handle scroll effect
   useEffect(() => {

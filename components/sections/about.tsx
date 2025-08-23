@@ -1,4 +1,4 @@
-import { CheckCircle, Globe, Rocket, Shield, TrendingUp, Zap } from "lucide-react";
+import { CheckCircle, Globe, Shield, TrendingUp, Zap } from "lucide-react";
 import { SectionHeader } from "./shared";
 import Image from "next/image";
 
