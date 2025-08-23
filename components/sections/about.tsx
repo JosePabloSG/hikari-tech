@@ -105,10 +105,10 @@ export default function About() {
             className="col-span-2 lg:col-span-2 row-span-1 group bg-gradient-to-br from-card/70 to-card/40 backdrop-blur-sm rounded-xl p-6 lg:p-4 shadow-sm hover:shadow-lg transition-all duration-500 border border-border hover:border-primary/30 animate-fade-in-up hover:-rotate-1"
             style={{ animationDelay: "0.4s" }}
           >
-            <div className="flex flex-col h-full justify-center">
+            <div className="flex flex-col h-full justify-start pt-3">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-6 h-6 bg-primary/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <CheckCircle className="w-3 h-3 text-primary" />
+                <div className="w-8 h-8 sm:w-6 sm:h-6 bg-primary/20 rounded-lg flex items-center justify-center p-1 sm:p-0 group-hover:scale-110 transition-transform duration-300">
+                  <CheckCircle className="w-4 h-4 sm:w-3 sm:h-3 text-primary" />
                 </div>
                 <h4 className="text-base font-bold font-poppins text-foreground group-hover:text-primary transition-colors">
                   Excelencia
@@ -125,10 +125,10 @@ export default function About() {
             className="col-span-2 lg:col-span-2 row-span-1 group bg-gradient-to-br from-card/70 to-card/40 backdrop-blur-sm rounded-xl p-6 lg:p-4 shadow-sm hover:shadow-lg transition-all duration-500 border border-border hover:border-primary/30 animate-fade-in-up hover:rotate-1"
             style={{ animationDelay: "0.5s" }}
           >
-            <div className="flex flex-col h-full justify-center">
+            <div className="flex flex-col h-full justify-start pt-3">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-6 h-6 bg-primary/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Shield className="w-3 h-3 text-primary" />
+                <div className="w-8 h-8 sm:w-6 sm:h-6 bg-primary/20 rounded-lg flex items-center justify-center p-1 sm:p-0 group-hover:scale-110 transition-transform duration-300">
+                  <Shield className="w-4 h-4 sm:w-3 sm:h-3 text-primary" />
                 </div>
                 <h4 className="text-base font-bold font-poppins text-foreground group-hover:text-primary transition-colors">
                   Transparencia
@@ -145,10 +145,10 @@ export default function About() {
             className="col-span-4 lg:col-span-2 row-span-1 group bg-gradient-to-br from-card/70 to-card/40 backdrop-blur-sm rounded-xl p-6 lg:p-4 shadow-sm hover:shadow-lg transition-all duration-500 border border-border hover:border-primary/30 animate-fade-in-up hover:rotate-1"
             style={{ animationDelay: "0.6s" }}
           >
-            <div className="flex flex-col h-full justify-center">
+            <div className="flex flex-col h-full justify-start pt-3">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-6 h-6 bg-primary/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Zap className="w-3 h-3 text-primary" />
+                <div className="w-8 h-8 sm:w-6 sm:h-6 bg-primary/20 rounded-lg flex items-center justify-center p-1 sm:p-0 group-hover:scale-110 transition-transform duration-300">
+                  <Zap className="w-4 h-4 sm:w-3 sm:h-3 text-primary" />
                 </div>
                 <h4 className="text-base font-bold font-poppins text-foreground group-hover:text-primary transition-colors">
                   Innovación continua
