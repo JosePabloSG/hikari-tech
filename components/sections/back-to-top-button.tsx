@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { ChevronUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import useStore from "@/store"
 
 export default function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false)
@@ -31,7 +32,9 @@ export default function BackToTopButton() {
     })
   }
 
-  if (!isVisible) {
+  const isMobileMenuOpen = useStore((s: any) => s.isMobileMenuOpen)
+
+  if (!isVisible || isMobileMenuOpen) {
     return null
   }
 

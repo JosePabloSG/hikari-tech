@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Menu, X, ArrowRight } from "lucide-react";
+import useStore from "@/store";
 
 const navItems = [
   { name: "Inicio", href: "#hero" },
@@ -16,8 +17,11 @@ const navItems = [
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // removed local mobile menu state to rely solely on global store
   const [activeSection, setActiveSection] = useState("hero");
+  const setMobileMenuOpen = useStore((s: any) => s.setMobileMenuOpen);
+  const isMobileMenuOpen = useStore((s: any) => s.isMobileMenuOpen);
+  const toggleMobileMenu = useStore((s: any) => s.toggleMobileMenu);
 
   // Handle scroll effect
   useEffect(() => {
@@ -25,8 +29,8 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Handle active section detection
@@ -56,7 +60,7 @@ export default function Navbar() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMobileMenuOpen(false);
+    setMobileMenuOpen(false)
   };
 
   return (
@@ -140,8 +144,10 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <motion.button
-              className="lg:hidden p-2 rounded-lg hover:bg-card transition-colors duration-300"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2 rounded-lg hover:bg-card transition-colors duration-300"
+              onClick={() => {
+                toggleMobileMenu()
+              }}
               whileTap={{ scale: 0.95 }}
             >
               <AnimatePresence mode="wait">
@@ -174,7 +180,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
+            {isMobileMenuOpen && (
           <>
             {/* Backdrop */}
             <motion.div
@@ -182,11 +188,13 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setMobileMenuOpen(false)
+              }}
             />
 
             {/* Mobile Menu */}
-            <motion.div
+                    <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -216,7 +224,10 @@ export default function Navbar() {
                         initial={{ x: 50, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: index * 0.1 }}
-                        onClick={() => scrollToSection(item.href)}
+                        onClick={() => {
+                          scrollToSection(item.href)
+                          setMobileMenuOpen(false)
+                        }}
                         className={`w-full text-left cursor-pointer px-4 py-3 rounded-xl font-inter font-medium transition-all duration-300 group flex items-center justify-between ${
                           activeSection === item.href.replace("#", "")
                             ? "bg-primary/10 text-primary"
