@@ -45,15 +45,28 @@ export default function Footer() {
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
   const [currentText, setCurrentText] = useState(0);
   const [isGlitching, setIsGlitching] = useState(false);
+  const [rotationMs, setRotationMs] = useState(() => {
+    if (typeof window === "undefined") return 8000;
+    return window.innerWidth < 640 ? 9000 : 8000;
+  });
 
-  // Auto-rotate carousel every 4 seconds
+  // Auto-rotate carousel based on rotationMs (slower). Update on resize.
   useEffect(() => {
+    const handleResize = () => {
+      setRotationMs(window.innerWidth < 640 ? 9000 : 8000);
+    };
+
+    window.addEventListener("resize", handleResize);
+
     const interval = setInterval(() => {
       setCurrentText((prev) => (prev + 1) % heroTexts.length);
-    }, 4000);
+    }, rotationMs);
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [rotationMs]);
 
   // Glitch effect every 5 seconds
   useEffect(() => {
@@ -192,22 +205,22 @@ export default function Footer() {
             </div>
 
             {/* Center: Hero Text Carousel */}
-            <div className="lg:col-span-2 flex items-center justify-center">
-              <div className="max-w-2xl text-center space-y-8">
+            <div className="lg:col-span-2 flex items-center justify-center lg:justify-start">
+              <div className="max-w-2xl text-center lg:text-left space-y-6">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentText}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -30 }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    transition={{ duration: 1.0, ease: "easeInOut" }}
                     className="space-y-6"
                   >
-                    <h3 className="text-4xl lg:text-6xl font-bold font-poppins">
-                      <span className="text-primary">{heroTexts[currentText].main}</span>
-                      <span className="text-foreground ml-2">{heroTexts[currentText].sub}</span>
+                    <h3 className="text-3xl sm:text-4xl lg:text-6xl font-bold font-poppins leading-tight">
+                      <span className="text-primary block sm:inline">{heroTexts[currentText].main}</span>
+                      <span className="text-foreground block sm:inline sm:ml-2">{heroTexts[currentText].sub}</span>
                     </h3>
-                    <p className="text-lg lg:text-xl text-muted-foreground font-inter leading-relaxed max-w-xl mx-auto">
+                    <p className="text-base sm:text-lg lg:text-xl text-muted-foreground font-inter leading-relaxed max-w-xl mx-auto lg:mx-0">
                       {heroTexts[currentText].description}
                     </p>
                   </motion.div>
@@ -240,7 +253,7 @@ export default function Footer() {
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
                     key={currentText}
-                    transition={{ duration: 4, ease: "linear" }}
+                    transition={{ duration: rotationMs / 1000, ease: "linear" }}
                   />
                 </div>
               </div>

@@ -29,11 +29,11 @@ export default function About() {
           description="Conoce la historia, valores y visión que nos impulsa a transformar empresas costarricenses."
         />
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto h-[800px] lg:h-[600px]">
+  {/* Bento Grid Layout */}
+  <div className="grid grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto h-auto lg:h-[600px]">
           {/* Logo and Company Info - Large Square */}
           <div
-            className="col-span-4 lg:col-span-2 row-span-2 group bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-700 border border-border hover:border-primary/30 animate-fade-in-up relative overflow-hidden flex flex-col justify-center"
+            className="col-span-4 lg:col-span-2 row-span-2 group bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-sm rounded-2xl p-8 lg:p-8 shadow-lg hover:shadow-2xl transition-all duration-700 border border-border hover:border-primary/30 animate-fade-in-up relative overflow-hidden flex flex-col justify-center"
             style={{ animationDelay: "0.1s" }}
           >
             {/* Logo Placeholder */}
@@ -102,7 +102,7 @@ export default function About() {
           {/* Values - Proper Bento Boxes */}
           {/* Excellence - Square */}
           <div
-            className="col-span-2 lg:col-span-2 row-span-1 group bg-gradient-to-br from-card/70 to-card/40 backdrop-blur-sm rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-500 border border-border hover:border-primary/30 animate-fade-in-up hover:-rotate-1"
+            className="col-span-2 lg:col-span-2 row-span-1 group bg-gradient-to-br from-card/70 to-card/40 backdrop-blur-sm rounded-xl p-6 lg:p-4 shadow-sm hover:shadow-lg transition-all duration-500 border border-border hover:border-primary/30 animate-fade-in-up hover:-rotate-1"
             style={{ animationDelay: "0.4s" }}
           >
             <div className="flex flex-col h-full justify-center">
@@ -122,7 +122,7 @@ export default function About() {
 
           {/* Transparency - Square */}
           <div
-            className="col-span-2 lg:col-span-2 row-span-1 group bg-gradient-to-br from-card/70 to-card/40 backdrop-blur-sm rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-500 border border-border hover:border-primary/30 animate-fade-in-up hover:rotate-1"
+            className="col-span-2 lg:col-span-2 row-span-1 group bg-gradient-to-br from-card/70 to-card/40 backdrop-blur-sm rounded-xl p-6 lg:p-4 shadow-sm hover:shadow-lg transition-all duration-500 border border-border hover:border-primary/30 animate-fade-in-up hover:rotate-1"
             style={{ animationDelay: "0.5s" }}
           >
             <div className="flex flex-col h-full justify-center">
@@ -142,7 +142,7 @@ export default function About() {
 
           {/* Innovation - Wide Rectangle */}
           <div
-            className="col-span-4 lg:col-span-2 row-span-1 group bg-gradient-to-br from-card/70 to-card/40 backdrop-blur-sm rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-500 border border-border hover:border-primary/30 animate-fade-in-up hover:rotate-1"
+            className="col-span-4 lg:col-span-2 row-span-1 group bg-gradient-to-br from-card/70 to-card/40 backdrop-blur-sm rounded-xl p-6 lg:p-4 shadow-sm hover:shadow-lg transition-all duration-500 border border-border hover:border-primary/30 animate-fade-in-up hover:rotate-1"
             style={{ animationDelay: "0.6s" }}
           >
             <div className="flex flex-col h-full justify-center">
