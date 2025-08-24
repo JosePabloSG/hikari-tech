@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Menu, X, ArrowRight } from "lucide-react";
+import { useTheme } from "next-themes";
 import useStore from "@/store";
 import type { StoreState } from "@/store/use-store";
+import ThemeToggle from "@/components/ui/theme-toggle";
 
 const navItems = [
   { name: "Inicio", href: "#hero" },
@@ -20,9 +22,23 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   // removed local mobile menu state to rely solely on global store
   const [activeSection, setActiveSection] = useState("hero");
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const setMobileMenuOpen = useStore((s: StoreState) => s.setMobileMenuOpen);
   const isMobileMenuOpen = useStore((s: StoreState) => s.isMobileMenuOpen);
   const toggleMobileMenu = useStore((s: StoreState) => s.toggleMobileMenu);
+
+  // Handle hydration
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Get the appropriate logo based on theme
+  const getLogoSrc = () => {
+    if (!mounted) return "/icons/logo.svg"; // Default during SSR
+    const currentTheme = resolvedTheme || theme;
+    return currentTheme === "dark" ? "/icons/ligh-logo.svg" : "/icons/logo.svg";
+  };
 
   // Handle scroll effect
   useEffect(() => {
@@ -86,7 +102,7 @@ export default function Navbar() {
               whileTap={{ scale: 0.95 }}
             >
               <div className="w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center">
-                <Image src="/icons/logo.svg" alt="HIKARI TECH" width={40} height={40} className="p-2" />
+                <Image src={getLogoSrc()} alt="HIKARI TECH" width={40} height={40} className="p-2" />
               </div>
               <div className="hidden sm:block">
                 <h1 className="font-bold font-poppins text-foreground text-lg lg:text-xl">
@@ -128,7 +144,8 @@ export default function Navbar() {
             </div>
 
             {/* CTA Button */}
-            <div className="hidden lg:block">
+            <div className="hidden lg:flex items-center gap-4">
+              <ThemeToggle showDropdown={true} />
               <motion.button
                 onClick={() => scrollToSection("#contacto")}
                 className="cursor-pointer bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 rounded-xl font-inter font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl group relative overflow-hidden"
@@ -143,14 +160,16 @@ export default function Navbar() {
               </motion.button>
             </div>
 
-            {/* Mobile Menu Button */}
-            <motion.button
-                className="lg:hidden p-2 rounded-lg hover:bg-card transition-colors duration-300"
-              onClick={() => {
-                toggleMobileMenu()
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
+            {/* Mobile controls */}
+            <div className="lg:hidden flex items-center gap-2">
+              <ThemeToggle showDropdown={false} />
+              <motion.button
+                className="p-2 rounded-lg hover:bg-card transition-colors duration-300"
+                onClick={() => {
+                  toggleMobileMenu()
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
               <AnimatePresence mode="wait">
                 {isMobileMenuOpen ? (
                   <motion.div
@@ -175,6 +194,7 @@ export default function Navbar() {
                 )}
               </AnimatePresence>
             </motion.button>
+            </div>
           </div>
         </div>
       </motion.nav>

@@ -1,8 +1,26 @@
+"use client";
+
 import { CheckCircle, Globe, Shield, TrendingUp, Zap } from "lucide-react";
 import { SectionHeader } from "./shared";
 import Image from "next/image";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 export default function About() {
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Handle hydration
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Get the appropriate logo based on theme
+  const getLogoSrc = () => {
+    if (!mounted) return "/icons/logo.svg"; // Default during SSR
+    const currentTheme = resolvedTheme || theme;
+    return currentTheme === "dark" ? "/icons/ligh-logo.svg" : "/icons/logo.svg";
+  };
   return (
     <section id="about" className="py-16 lg:py-24 relative overflow-hidden">
       {/* Background Elements */}
@@ -39,7 +57,7 @@ export default function About() {
             {/* Logo Placeholder */}
             <div className="flex items-center justify-center mb-6">
               <div className="w-20 h-20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 relative overflow-hidden">
-                <Image src="/icons/logo.svg" alt="HIKARI TECH" width={100} height={100}  className="p-2"/>
+                <Image src={getLogoSrc()} alt="HIKARI TECH" width={100} height={100}  className="p-2"/>
               </div>
             </div>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { inter, poppins } from "@/fonts/fonts";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 export const metadata: Metadata = {
   title: "HIKARI Tech - Soluciones Tecnológicas Innovadoras",
@@ -15,8 +16,17 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={`${poppins.variable} ${inter.variable} antialiased`}>
-      <body suppressHydrationWarning={true}>{children}</body>
+    <html lang="es" className={`${poppins.variable} ${inter.variable} antialiased`} suppressHydrationWarning>
+      <body suppressHydrationWarning={true}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 import { 
   MapPin, 
   Mail, 
@@ -45,10 +46,24 @@ export default function Footer() {
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
   const [currentText, setCurrentText] = useState(0);
   const [isGlitching, setIsGlitching] = useState(false);
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [rotationMs, setRotationMs] = useState(() => {
     if (typeof window === "undefined") return 8000;
     return window.innerWidth < 640 ? 9000 : 8000;
   });
+
+  // Handle hydration
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Get the appropriate logo based on theme
+  const getLogoSrc = () => {
+    if (!mounted) return "/icons/logo.svg"; // Default during SSR
+    const currentTheme = resolvedTheme || theme;
+    return currentTheme === "dark" ? "/icons/ligh-logo.svg" : "/icons/logo.svg";
+  };
 
   // Auto-rotate carousel based on rotationMs (slower). Update on resize.
   useEffect(() => {
@@ -268,7 +283,7 @@ export default function Footer() {
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10  rounded-lg flex items-center justify-center">
-                  <Image src="/icons/logo.svg" alt="HIKARI Tech" width={40} height={40} />
+                  <Image src={getLogoSrc()} alt="HIKARI Tech" width={40} height={40} />
                 </div>
                 <div>
                   <h4 className="font-bold font-poppins text-foreground">HIKARI Tech</h4>
