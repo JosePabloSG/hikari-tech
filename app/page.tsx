@@ -5,21 +5,44 @@ import { Separator } from "@radix-ui/react-separator";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
+    <>
+      {/* Skip to main content for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-md z-50"
+      >
+        Saltar al contenido principal
+      </a>
+
       <Navbar />
-      <Hero />
-      <Separator />
-      <Issues />
-      <Separator />
-      <Solutions />
-      <Separator />
-      <WorkFlow />
-      <Separator />
-      <About />
-      <Separator />
-      <CTA />
+      
+      <main id="main-content" className="min-h-screen bg-background">
+        {/* Hero Section */}
+        <Hero />
+        <Separator />
+        
+        {/* Problems Section */}
+        <Issues />
+        <Separator />
+        
+        {/* Solutions Section */}
+        <Solutions />
+        <Separator />
+        
+        {/* Process Section */}
+        <WorkFlow />
+        <Separator />
+        
+        {/* About Section */}
+        <About />
+        <Separator />
+        
+        {/* Call to Action */}
+        <CTA />
+      </main>
+      
       <Footer />
       <BackToTopButton />
-    </main>
+    </>
   );
 }

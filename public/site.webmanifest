@@ -1,0 +1,30 @@
+{
+  "name": "HIKARI Tech",
+  "short_name": "HIKARI",
+  "description": "Soluciones tecnológicas para empresas costarricenses",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f46530",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png", 
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["business", "technology", "productivity"],
+  "lang": "es",
+  "dir": "ltr"
+}
