@@ -17,22 +17,22 @@ export default function About() {
 
   // Get the appropriate logo based on theme
   const getLogoSrc = () => {
-    if (!mounted) return "/icons/logo.svg"; // Default during SSR
+    if (!mounted) return "/icons/hikari_dark.svg"; // Default during SSR
     const currentTheme = resolvedTheme || theme;
-    return currentTheme === "dark" ? "/icons/ligh-logo.svg" : "/icons/logo.svg";
+    return currentTheme === "dark" ? "/icons/hikari_dark.svg" : "/icons/hikari_light.svg";
   };
   return (
     <section id="about" className="py-16 lg:py-24 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/3 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-muted/20 dark:bg-muted/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-muted/30 dark:bg-muted/15 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-6xl opacity-5">
           <div className="grid grid-cols-12 grid-rows-8 gap-3 h-full">
             {Array.from({ length: 96 }).map((_, i) => (
               <div
                 key={i}
-                className="w-1 h-1 bg-primary rounded-full animate-pulse"
+                className="w-1 h-1 bg-muted dark:bg-muted/50 rounded-full animate-pulse"
                 style={{ animationDelay: `${i * 0.05}s` }}
               ></div>
             ))}

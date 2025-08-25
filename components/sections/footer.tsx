@@ -60,9 +60,9 @@ export default function Footer() {
 
   // Get the appropriate logo based on theme
   const getLogoSrc = () => {
-    if (!mounted) return "/icons/logo.svg"; // Default during SSR
+    if (!mounted) return "/icons/hikari_dark.svg"; // Default during SSR
     const currentTheme = resolvedTheme || theme;
-    return currentTheme === "dark" ? "/icons/ligh-logo.svg" : "/icons/logo.svg";
+    return currentTheme === "dark" ? "/icons/hikari_dark.svg" : "/icons/hikari_light.svg";
   };
 
   // Auto-rotate carousel based on rotationMs (slower). Update on resize.
