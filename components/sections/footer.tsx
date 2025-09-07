@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 import { 
   MapPin, 
   Mail, 
-  ArrowRight
+  ArrowRight,
 } from "lucide-react";
 
 const footerSections = {
@@ -293,10 +293,11 @@ export default function Footer() {
             </div>
 
             {/* Contact Info */}
-            <div className="flex flex-col sm:flex-row items-center gap-6 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4" />
-                <span>Costa Rica</span>
+            <div className="flex flex-col items-end gap-4">
+              <div className="flex flex-col sm:flex-row items-center gap-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  <span>Costa Rica</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
@@ -308,7 +309,40 @@ export default function Footer() {
                 </a>
               </div>
             </div>
+            <div className="flex items-center gap-6 mt-2">
+              <div className="flex items-center gap-2">
+                <a href="https://www.linkedin.com/company/hikari-tech-cr/" target="_blank" rel="noopener noreferrer">
+                 <Image
+                    src="/icons/linkedin.svg"
+                    alt="LinkedIn"
+                    width={20}
+                    height={20}
+                  />
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <a href="https://www.instagram.com/hikaritech.cr?igsh=MTUzOXNpMHRyMXZibA==" target="_blank" rel="noopener noreferrer">
+                  <Image
+                    src="/icons/instagram.svg"
+                    alt="Instagram"
+                    width={26}
+                    height={20}
+                  />
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <a href="https://www.tiktok.com/@hikaritech.cr?_t=ZS-8zX4Tsr1OnB&_r=1" target="_blank" rel="noopener noreferrer">
+                  <Image
+                    src="/icons/tiktok.svg"
+                    alt="TikTok"
+                    width={21}
+                    height={20}
+                  />
+                </a>
+              </div>
+            </div>
           </div>
+        </div>
 
           {/* Copyright and Legal */}
           <div className="mt-8 pt-6 border-t border-border/20 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
