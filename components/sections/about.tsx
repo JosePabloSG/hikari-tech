@@ -79,8 +79,8 @@ export default function About() {
             style={{ animationDelay: "0.2s" }}
           >
             <div className="flex items-start gap-4 h-full">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                <Globe className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 bg-muted rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                <Globe className="w-5 h-5 text-muted-foreground" />
               </div>
               <div className="space-y-2 flex-1">
                 <h3 className="text-xl font-bold font-poppins text-foreground group-hover:text-primary transition-colors">
@@ -101,8 +101,8 @@ export default function About() {
             style={{ animationDelay: "0.3s" }}
           >
             <div className="flex items-start gap-4 h-full">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                <TrendingUp className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 bg-muted rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                <TrendingUp className="w-5 h-5 text-muted-foreground" />
               </div>
               <div className="space-y-2 flex-1">
                 <h3 className="text-xl font-bold font-poppins text-foreground group-hover:text-primary transition-colors">
@@ -125,8 +125,8 @@ export default function About() {
           >
             <div className="flex flex-col h-full justify-start pt-3">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 sm:w-6 sm:h-6 bg-primary/20 rounded-lg flex items-center justify-center p-1 sm:p-0 group-hover:scale-110 transition-transform duration-300">
-                  <CheckCircle className="w-4 h-4 sm:w-3 sm:h-3 text-primary" />
+                <div className="w-8 h-8 sm:w-6 sm:h-6 bg-muted rounded-lg flex items-center justify-center p-1 sm:p-0 group-hover:scale-110 transition-transform duration-300">
+                  <CheckCircle className="w-4 h-4 sm:w-3 sm:h-3 text-muted-foreground" />
                 </div>
                 <h4 className="text-base font-bold font-poppins text-foreground group-hover:text-primary transition-colors">
                   Excelencia
@@ -145,8 +145,8 @@ export default function About() {
           >
             <div className="flex flex-col h-full justify-start pt-3">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 sm:w-6 sm:h-6 bg-primary/20 rounded-lg flex items-center justify-center p-1 sm:p-0 group-hover:scale-110 transition-transform duration-300">
-                  <Shield className="w-4 h-4 sm:w-3 sm:h-3 text-primary" />
+                <div className="w-8 h-8 sm:w-6 sm:h-6 bg-muted rounded-lg flex items-center justify-center p-1 sm:p-0 group-hover:scale-110 transition-transform duration-300">
+                  <Shield className="w-4 h-4 sm:w-3 sm:h-3 text-muted-foreground" />
                 </div>
                 <h4 className="text-base font-bold font-poppins text-foreground group-hover:text-primary transition-colors">
                   Transparencia
@@ -165,8 +165,8 @@ export default function About() {
           >
             <div className="flex flex-col h-full justify-start pt-3">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 sm:w-6 sm:h-6 bg-primary/20 rounded-lg flex items-center justify-center p-1 sm:p-0 group-hover:scale-110 transition-transform duration-300">
-                  <Zap className="w-4 h-4 sm:w-3 sm:h-3 text-primary" />
+                <div className="w-8 h-8 sm:w-6 sm:h-6 bg-muted rounded-lg flex items-center justify-center p-1 sm:p-0 group-hover:scale-110 transition-transform duration-300">
+                  <Zap className="w-4 h-4 sm:w-3 sm:h-3 text-muted-foreground" />
                 </div>
                 <h4 className="text-base font-bold font-poppins text-foreground group-hover:text-primary transition-colors">
                   Innovación continua

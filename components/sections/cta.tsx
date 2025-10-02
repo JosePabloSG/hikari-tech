@@ -86,8 +86,8 @@ export default function CTA() {
           {/* Trust Indicators */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="flex flex-col items-center space-y-3 group">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                <CheckCircle className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center group-hover:bg-muted/80 group-hover:scale-110 transition-all duration-300">
+                <CheckCircle className="w-8 h-8 text-foreground" />
               </div>
               <div className="text-center">
                 <h3 className="font-bold font-poppins text-foreground mb-1">Sin compromiso</h3>
@@ -96,8 +96,8 @@ export default function CTA() {
             </div>
 
             <div className="flex flex-col items-center space-y-3 group">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                <Clock className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center group-hover:bg-muted/80 group-hover:scale-110 transition-all duration-300">
+                <Clock className="w-8 h-8 text-foreground" />
               </div>
               <div className="text-center">
                 <h3 className="font-bold font-poppins text-foreground mb-1">Respuesta rápida</h3>
@@ -106,8 +106,8 @@ export default function CTA() {
             </div>
 
             <div className="flex flex-col items-center space-y-3 group">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                <Shield className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center group-hover:bg-muted/80 group-hover:scale-110 transition-all duration-300">
+                <Shield className="w-8 h-8 text-foreground" />
               </div>
               <div className="text-center">
                 <h3 className="font-bold font-poppins text-foreground mb-1">100% Costarricense</h3>

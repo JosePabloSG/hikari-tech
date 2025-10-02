@@ -12,7 +12,7 @@ export default function WorkFlow() {
 
         <div className="relative max-w-4xl mx-auto">
           {/* Vertical Connection Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/60 to-primary/20 transform -translate-x-1/2 hidden md:block"></div>
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-border via-border to-border transform -translate-x-1/2 hidden md:block"></div>
 
           <div className="space-y-16">
             {/* Step 1 */}
@@ -20,12 +20,12 @@ export default function WorkFlow() {
               {/* Mobile Layout */}
               <div className="md:hidden space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden">
-                    <Ear className="w-7 h-7 text-primary-foreground group-hover:rotate-12 transition-transform duration-300" />
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden">
+                    <Ear className="w-7 h-7 text-foreground group-hover:rotate-12 transition-transform duration-300" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                   </div>
-                  <div className="flex items-center gap-3 text-primary/60">
-                    <div className="w-8 h-0.5 bg-primary/30"></div>
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <div className="w-8 h-0.5 bg-border"></div>
                     <span className="text-sm font-inter font-medium">Diagnóstico inicial</span>
                   </div>
                 </div>
@@ -55,15 +55,15 @@ export default function WorkFlow() {
                 </div>
 
                 <div className="relative flex-shrink-0">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden z-10">
-                    <Ear className="w-7 h-7 text-primary-foreground group-hover:rotate-12 transition-transform duration-300" />
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden z-10">
+                    <Ear className="w-7 h-7 text-foreground group-hover:rotate-12 transition-transform duration-300" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                   </div>
                 </div>
 
                 <div className="md:w-1/2 md:pl-8">
-                  <div className="flex items-center gap-3 text-primary/60">
-                    <div className="w-8 h-0.5 bg-primary/30"></div>
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <div className="w-8 h-0.5 bg-border"></div>
                     <span className="text-sm font-inter font-medium">Diagnóstico inicial</span>
                   </div>
                 </div>
@@ -75,12 +75,12 @@ export default function WorkFlow() {
               {/* Mobile Layout */}
               <div className="md:hidden space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden">
-                    <PenTool className="w-7 h-7 text-primary-foreground group-hover:rotate-12 transition-transform duration-300" />
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden">
+                    <PenTool className="w-7 h-7 text-foreground group-hover:rotate-12 transition-transform duration-300" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                   </div>
-                  <div className="flex items-center gap-3 text-primary/60">
-                    <div className="w-8 h-0.5 bg-primary/30"></div>
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <div className="w-8 h-0.5 bg-border"></div>
                     <span className="text-sm font-inter font-medium">Propuesta detallada</span>
                   </div>
                 </div>
@@ -98,15 +98,15 @@ export default function WorkFlow() {
               {/* Desktop Layout */}
               <div className="hidden md:flex flex-row items-center gap-8">
                 <div className="md:w-1/2 md:text-right md:pr-8 md:order-1">
-                  <div className="flex items-center justify-end gap-3 text-primary/60">
+                  <div className="flex items-center justify-end gap-3 text-muted-foreground">
                     <span className="text-sm font-inter font-medium">Propuesta detallada</span>
-                    <div className="w-8 h-0.5 bg-primary/30"></div>
+                    <div className="w-8 h-0.5 bg-border"></div>
                   </div>
                 </div>
 
                 <div className="relative flex-shrink-0 md:order-2">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden z-10">
-                    <PenTool className="w-7 h-7 text-primary-foreground group-hover:rotate-12 transition-transform duration-300" />
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden z-10">
+                    <PenTool className="w-7 h-7 text-foreground group-hover:rotate-12 transition-transform duration-300" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                   </div>
                 </div>
@@ -130,12 +130,12 @@ export default function WorkFlow() {
               {/* Mobile Layout */}
               <div className="md:hidden space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden">
-                    <Code className="w-7 h-7 text-primary-foreground group-hover:rotate-12 transition-transform duration-300" />
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden">
+                    <Code className="w-7 h-7 text-foreground group-hover:rotate-12 transition-transform duration-300" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                   </div>
-                  <div className="flex items-center gap-3 text-primary/60">
-                    <div className="w-8 h-0.5 bg-primary/30"></div>
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <div className="w-8 h-0.5 bg-border"></div>
                     <span className="text-sm font-inter font-medium">Desarrollo iterativo</span>
                   </div>
                 </div>
@@ -165,15 +165,15 @@ export default function WorkFlow() {
                 </div>
 
                 <div className="relative flex-shrink-0">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden z-10">
-                    <Code className="w-7 h-7 text-primary-foreground group-hover:rotate-12 transition-transform duration-300" />
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden z-10">
+                    <Code className="w-7 h-7 text-foreground group-hover:rotate-12 transition-transform duration-300" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                   </div>
                 </div>
 
                 <div className="md:w-1/2 md:pl-8">
-                  <div className="flex items-center gap-3 text-primary/60">
-                    <div className="w-8 h-0.5 bg-primary/30"></div>
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <div className="w-8 h-0.5 bg-border"></div>
                     <span className="text-sm font-inter font-medium">Desarrollo iterativo</span>
                   </div>
                 </div>
@@ -185,12 +185,12 @@ export default function WorkFlow() {
               {/* Mobile Layout */}
               <div className="md:hidden space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden">
-                    <HeadphonesIcon className="w-7 h-7 text-primary-foreground group-hover:rotate-12 transition-transform duration-300" />
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden">
+                    <HeadphonesIcon className="w-7 h-7 text-foreground group-hover:rotate-12 transition-transform duration-300" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                   </div>
-                  <div className="flex items-center gap-3 text-primary/60">
-                    <div className="w-8 h-0.5 bg-primary/30"></div>
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <div className="w-8 h-0.5 bg-border"></div>
                     <span className="text-sm font-inter font-medium">Soporte continuo</span>
                   </div>
                 </div>
@@ -208,15 +208,15 @@ export default function WorkFlow() {
               {/* Desktop Layout */}
               <div className="hidden md:flex flex-row items-center gap-8">
                 <div className="md:w-1/2 md:text-right md:pr-8 md:order-1">
-                  <div className="flex items-center justify-end gap-3 text-primary/60">
+                  <div className="flex items-center justify-end gap-3 text-muted-foreground">
                     <span className="text-sm font-inter font-medium">Soporte continuo</span>
-                    <div className="w-8 h-0.5 bg-primary/30"></div>
+                    <div className="w-8 h-0.5 bg-border"></div>
                   </div>
                 </div>
 
                 <div className="relative flex-shrink-0 md:order-2">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden z-10">
-                    <HeadphonesIcon className="w-7 h-7 text-primary-foreground group-hover:rotate-12 transition-transform duration-300" />
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500 relative overflow-hidden z-10">
+                    <HeadphonesIcon className="w-7 h-7 text-foreground group-hover:rotate-12 transition-transform duration-300" />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                   </div>
                 </div>

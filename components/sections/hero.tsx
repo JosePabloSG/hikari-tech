@@ -50,8 +50,8 @@ export default function Hero() {
         {/* Left Side - Text Content */}
         <div className="space-y-8">
           <div className="space-y-6">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium font-inter">
-              <Rocket className="w-4 h-4 text-primary mr-2" />
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-muted text-muted-foreground text-sm font-medium font-inter">
+              <Rocket className="w-4 h-4 text-muted-foreground mr-2" />
                Innovación Tecnológica en Costa Rica
             </div>
 
@@ -93,15 +93,15 @@ export default function Hero() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
             <div className="text-center">
-              <div className="text-2xl font-bold font-poppins text-primary">100%</div>
+              <div className="text-2xl font-bold font-poppins text-foreground">100%</div>
               <div className="text-sm font-inter text-muted-foreground">Compromiso</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold font-poppins text-primary">0</div>
+              <div className="text-2xl font-bold font-poppins text-foreground">0</div>
               <div className="text-sm font-inter text-muted-foreground">Días de Espera</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold font-poppins text-primary">24/7</div>
+              <div className="text-2xl font-bold font-poppins text-foreground">24/7</div>
               <div className="text-sm font-inter text-muted-foreground">Disponibilidad</div>
             </div>
           </div>
@@ -146,17 +146,17 @@ export default function Hero() {
 
             {/* Floating Elements */}
             <div
-              className="absolute -top-4 -right-4 w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center float-animation"
+              className="absolute -top-4 -right-4 w-16 h-16 bg-muted/50 rounded-full flex items-center justify-center float-animation"
               style={{ animationDelay: "1s" }}
             >
-              <Settings className="w-8 h-8 text-primary" />
+              <Settings className="w-8 h-8 text-muted-foreground" />
             </div>
 
             <div
-              className="absolute -bottom-4 -left-4 w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center float-animation"
+              className="absolute -bottom-4 -left-4 w-12 h-12 bg-muted/50 rounded-full flex items-center justify-center float-animation"
               style={{ animationDelay: "2s" }}
             >
-              <Rocket className="w-6 h-6 text-secondary" />
+              <Rocket className="w-6 h-6 text-muted-foreground" />
             </div>
           </div>
         </div>
