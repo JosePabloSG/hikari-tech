@@ -1,5 +1,13 @@
+"use client";
+
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import { BarChart3, Clock, Globe, Wrench } from "lucide-react";
-import { SectionHeader, FeatureCard, GridPattern } from "./shared";
+import { SectionHeader, FeatureCard } from "./shared";
+
+const StarsBackground = dynamic(() => import("@/components/ui/stars-background"), {
+  ssr: false,
+});
 
 const problems = [
   {
@@ -26,8 +34,10 @@ const problems = [
 
 export default function Issues() {
   return (
-    <section id="issues" className="py-16 lg:py-24 pb-32 bg-muted/30 relative overflow-hidden">
-      <GridPattern size={60} opacity={0.4} />
+    <section id="issues" className="py-16 lg:py-24 pb-32 relative overflow-hidden">
+      <Suspense fallback={null}>
+        <StarsBackground />
+      </Suspense>
       <div className="container mx-auto px-4 relative z-10">
         <SectionHeader
           title="Problemas que resolvemos"

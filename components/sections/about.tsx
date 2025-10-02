@@ -4,7 +4,12 @@ import { CheckCircle, Globe, Shield, TrendingUp, Zap } from "lucide-react";
 import { SectionHeader } from "./shared";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
+import dynamic from "next/dynamic";
+
+const StarsBackground = dynamic(() => import("@/components/ui/stars-background"), {
+  ssr: false,
+});
 
 export default function About() {
   const { theme, resolvedTheme } = useTheme();
@@ -23,22 +28,9 @@ export default function About() {
   };
   return (
     <section id="about" className="py-16 lg:py-24 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-muted/20 dark:bg-muted/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-muted/30 dark:bg-muted/15 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-6xl opacity-5">
-          <div className="grid grid-cols-12 grid-rows-8 gap-3 h-full">
-            {Array.from({ length: 96 }).map((_, i) => (
-              <div
-                key={i}
-                className="w-1 h-1 bg-muted dark:bg-muted/50 rounded-full animate-pulse"
-                style={{ animationDelay: `${i * 0.05}s` }}
-              ></div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <Suspense fallback={null}>
+        <StarsBackground />
+      </Suspense>
 
       <div className="container mx-auto px-4 relative">
         {/* Header */}

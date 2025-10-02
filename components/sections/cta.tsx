@@ -4,8 +4,14 @@ import { CheckCircle, Clock, MessageCircle, Shield } from "lucide-react";
 import { Button } from "../ui/button";
 import { FormField } from "../ui/form-field";
 import { SubmitStatus } from "../ui/submit-status";
-import { SectionHeader, GridPattern } from "./shared";
+import { SectionHeader } from "./shared";
 import { useContactForm } from "@/hooks/use-contact-form";
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
+
+const StarsBackground = dynamic(() => import("@/components/ui/stars-background"), {
+  ssr: false,
+});
 
 export default function CTA() {
   const { form, isSubmitting, submitStatus, handleSubmit, formState } = useContactForm();
@@ -13,13 +19,9 @@ export default function CTA() {
 
   return (
     <section id="contacto" className="py-20 lg:py-32 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        {/* Removed orange blur circles for cleaner look */}
-      </div>
-
-      {/* Grid Pattern Background */}
-      <GridPattern size={60} opacity={0.25} />
+      <Suspense fallback={null}>
+        <StarsBackground />
+      </Suspense>
 
       <div className="container mx-auto px-4 relative">
         <div className="max-w-4xl mx-auto text-center">

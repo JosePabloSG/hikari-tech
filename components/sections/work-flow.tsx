@@ -1,9 +1,20 @@
+"use client";
+
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import { Code, Ear, HeadphonesIcon, PenTool } from "lucide-react";
 import { SectionHeader } from "./shared";
+
+const StarsBackground = dynamic(() => import("@/components/ui/stars-background"), {
+  ssr: false,
+});
 
 export default function WorkFlow() {
   return (
     <section id="workflow" className="py-16 lg:py-24 relative overflow-hidden">
+      <Suspense fallback={null}>
+        <StarsBackground />
+      </Suspense>
       <div className="container mx-auto px-4 relative">
         <SectionHeader
           title="Cómo trabajamos"

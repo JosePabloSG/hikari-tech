@@ -42,6 +42,13 @@ const heroTexts = [
   }
 ];
 
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
+
+const StarsBackground = dynamic(() => import("@/components/ui/stars-background"), {
+  ssr: false,
+});
+
 export default function Footer() {
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
   const [currentText, setCurrentText] = useState(0);
@@ -95,10 +102,9 @@ export default function Footer() {
 
   return (
     <footer className="bg-gradient-to-br from-background via-card to-background border-t border-border/50 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmNDY1MzAiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIi8+PC9nPjwvZz48L3N2Zz4=')] bg-repeat"></div>
-      </div>
+      <Suspense fallback={null}>
+        <StarsBackground />
+      </Suspense>
 
       <div className="container mx-auto px-4 relative">
         {/* Hero Section with Simple Text */}
