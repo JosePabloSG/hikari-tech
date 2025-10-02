@@ -1,8 +1,24 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import dynamic from "next/dynamic"
+import { Suspense } from "react"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, Users, Settings, Rocket } from "lucide-react"
+
+// Importar los componentes 3D dinámicamente para evitar problemas con SSR
+const CodeNodes = dynamic(() => import("@/components/ui/code-nodes"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-48 h-48 rounded-full bg-muted/50 animate-pulse" />
+    </div>
+  ),
+})
+
+const StarsBackground = dynamic(() => import("@/components/ui/stars-background"), {
+  ssr: false,
+})
 
 const typewriterTexts = [
   "Transformamos procesos manuales",
@@ -45,11 +61,17 @@ export default function Hero() {
   }, [displayText, isTyping, currentTextIndex])
 
   return (
-    <section id="hero" className="container mx-auto px-4 py-16 lg:py-24">
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
-        {/* Left Side - Text Content */}
-        <div className="space-y-8">
-          <div className="space-y-6">
+    <section id="hero" className="relative h-screen min-h-[700px] overflow-hidden">
+      {/* Fondo de estrellas para toda la sección */}
+      <Suspense fallback={null}>
+        <StarsBackground />
+      </Suspense>
+
+      <div className="container mx-auto px-4 h-full relative z-10">
+        <div className="grid md:grid-cols-2 gap-8 h-full items-center">
+          {/* Left Side - Text Content */}
+          <div className="space-y-8">
+            <div className="space-y-6">
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-muted text-muted-foreground text-sm font-medium font-inter">
               <Rocket className="w-4 h-4 text-muted-foreground mr-2" />
                Innovación Tecnológica en Costa Rica
@@ -71,93 +93,46 @@ export default function Hero() {
               Ayudamos a empresas medianas de Costa Rica a superar la ineficiencia de sus procesos manuales mediante
               soluciones tecnológicas confiables.
             </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-primary cursor-pointer text-primary hover:bg-primary hover:text-primary-foreground font-inter font-medium px-8 py-3 rounded-lg transition-all duration-300 bg-transparent"
-              onClick={() => {
-                const ctaSection = document.getElementById('contacto');
-                if (ctaSection) {
-                  ctaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }}
-            >
-              Conversemos sobre tus Necesidades
-            </Button>
-          </div>
-
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
-            <div className="text-center">
-              <div className="text-2xl font-bold font-poppins text-foreground">100%</div>
-              <div className="text-sm font-inter text-muted-foreground">Compromiso</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold font-poppins text-foreground">0</div>
-              <div className="text-sm font-inter text-muted-foreground">Días de Espera</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold font-poppins text-foreground">24/7</div>
-              <div className="text-sm font-inter text-muted-foreground">Disponibilidad</div>
-            </div>
-          </div>
-        </div>
 
-        {/* Right Side - Animated Asset */}
-        <div className="relative flex items-center justify-center">
-          <div className="relative w-full max-w-md mx-auto">
-            {/* Main Development Illustration */}
-            <div className="relative bg-card rounded-2xl p-8 shadow-lg float-animation">
-              {/* Code Editor Mockup */}
-              <div className="bg-foreground rounded-lg p-4 mb-4">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                </div>
-                <div className="space-y-2">
-                  <div className="h-2 bg-primary/60 rounded w-3/4 code-flow"></div>
-                  <div className="h-2 bg-secondary/60 rounded w-1/2" style={{ animationDelay: "1s" }}></div>
-                  <div className="h-2 bg-primary/40 rounded w-5/6" style={{ animationDelay: "2s" }}></div>
-                  <div className="h-2 bg-secondary/40 rounded w-2/3" style={{ animationDelay: "3s" }}></div>
-                </div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-primary cursor-pointer text-primary hover:bg-primary hover:text-primary-foreground font-inter font-medium px-8 py-3 rounded-lg transition-all duration-300 bg-transparent"
+                onClick={() => {
+                  const ctaSection = document.getElementById('contacto');
+                  if (ctaSection) {
+                    ctaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+              >
+                Conversemos sobre tus Necesidades
+              </Button>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
+              <div className="text-center">
+                <div className="text-2xl font-bold font-poppins text-foreground">100%</div>
+                <div className="text-sm font-inter text-muted-foreground">Compromiso</div>
               </div>
-
-              {/* Dashboard Elements */}
-              <div className="grid grid-cols-2 gap-3">
-                <div className="bg-primary/10 rounded-lg p-3 pulse-glow">
-                  <div className="w-8 h-8 bg-primary rounded-lg mb-2 flex items-center justify-center">
-                    <CheckCircle className="w-4 h-4 text-primary-foreground" />
-                  </div>
-                  <div className="h-2 bg-primary/30 rounded w-full"></div>
-                </div>
-                <div className="bg-secondary/10 rounded-lg p-3" style={{ animationDelay: "0.5s" }}>
-                  <div className="w-8 h-8 bg-secondary rounded-lg mb-2 flex items-center justify-center">
-                    <Users className="w-4 h-4 text-foreground" />
-                  </div>
-                  <div className="h-2 bg-secondary/30 rounded w-3/4"></div>
-                </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold font-poppins text-foreground">0</div>
+                <div className="text-sm font-inter text-muted-foreground">Días de Espera</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold font-poppins text-foreground">24/7</div>
+                <div className="text-sm font-inter text-muted-foreground">Disponibilidad</div>
               </div>
             </div>
+          </div>
 
-            {/* Floating Elements */}
-            <div
-              className="absolute -top-4 -right-4 w-16 h-16 bg-muted/50 rounded-full flex items-center justify-center float-animation"
-              style={{ animationDelay: "1s" }}
-            >
-              <Settings className="w-8 h-8 text-muted-foreground" />
-            </div>
-
-            <div
-              className="absolute -bottom-4 -left-4 w-12 h-12 bg-muted/50 rounded-full flex items-center justify-center float-animation"
-              style={{ animationDelay: "2s" }}
-            >
-              <Rocket className="w-6 h-6 text-muted-foreground" />
-            </div>
+          {/* Right Side - 3D Nodes Network */}
+          <div className="relative w-full h-full hidden md:block">
+            <Suspense fallback={null}>
+              <CodeNodes />
+            </Suspense>
           </div>
         </div>
       </div>
