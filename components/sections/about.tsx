@@ -58,7 +58,7 @@ export default function About() {
                 HIKARI TECH
               </h3>
               <p className="text-base text-muted-foreground font-inter leading-relaxed group-hover:text-foreground/80 transition-colors">
-                Empresa costarricense especializada en soluciones tecnológicas para empresas medianas.
+                Empresa costarricense especializada en soluciones tecnológicas para empresas.
               </p>
             </div>
 
@@ -79,7 +79,7 @@ export default function About() {
                   Misión
                 </h3>
                 <p className="text-sm text-muted-foreground font-inter leading-relaxed group-hover:text-foreground/80 transition-colors">
-                  Ayudamos a empresas medianas de Costa Rica a superar la ineficiencia mediante soluciones
+                  Ayudamos a empresas de Costa Rica a superar la ineficiencia mediante soluciones
                   tecnológicas confiables.
                 </p>
               </div>

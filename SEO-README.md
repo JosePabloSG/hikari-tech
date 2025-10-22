@@ -140,7 +140,7 @@ Web Vitals are automatically monitored in the Analytics component:
 
 - "desarrollo de sitios web profesionales Costa Rica"
 - "empresa desarrollo software San José"
-- "consultoría tecnológica empresas medianas"
+- "consultoría tecnológica empresas "
 
 ## 📱 Social Media Optimization
 

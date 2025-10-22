@@ -4,7 +4,7 @@ export const SEO_CONFIG = {
   siteName: "HIKARI Tech",
   siteUrl: "https://hikaricr.tech",
   defaultTitle: "HIKARI Tech - Soluciones Tecnológicas para Empresas en Costa Rica",
-  defaultDescription: "Transformamos empresas costarricenses con soluciones tecnológicas innovadoras. Desarrollo web, aplicaciones móviles, automatización y consultoría IT para empresas medianas.",
+  defaultDescription: "Transformamos empresas costarricenses con soluciones tecnológicas innovadoras. Desarrollo web, aplicaciones móviles, automatización y consultoría IT para empresas.",
   
   // Company information
   company: {

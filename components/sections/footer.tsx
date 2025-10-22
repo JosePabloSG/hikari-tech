@@ -72,6 +72,13 @@ export default function Footer() {
     return currentTheme === "dark" ? "/icons/hikari_dark.svg" : "/icons/hikari_light.svg";
   };
 
+  // Get the appropriate TikTok icon based on theme
+  const getTikTokIconSrc = () => {
+    if (!mounted) return "/icons/TikTok_dark.svg"; // Default during SSR
+    const currentTheme = resolvedTheme || theme;
+    return currentTheme === "dark" ? "/icons/TikTok_dark.svg" : "/icons/TikTok_light.svg";
+  };
+
   // Auto-rotate carousel based on rotationMs (slower). Update on resize.
   useEffect(() => {
     const handleResize = () => {
@@ -321,28 +328,28 @@ export default function Footer() {
                  <Image
                     src="/icons/linkedin.svg"
                     alt="LinkedIn"
-                    width={20}
-                    height={20}
+                    width={24}
+                    height={24}
                   />
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <a href="https://www.instagram.com/hikaritech.cr?igsh=MTUzOXNpMHRyMXZibA==" target="_blank" rel="noopener noreferrer">
                   <Image
-                    src="/icons/instagram.svg"
+                    src="/icons/instagram-icon.svg"
                     alt="Instagram"
-                    width={26}
-                    height={20}
+                    width={24}
+                    height={24}
                   />
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <a href="https://www.tiktok.com/@hikaritech.cr?_t=ZS-8zX4Tsr1OnB&_r=1" target="_blank" rel="noopener noreferrer">
                   <Image
-                    src="/icons/tiktok.svg"
+                    src={getTikTokIconSrc()}
                     alt="TikTok"
-                    width={21}
-                    height={20}
+                    width={24}
+                    height={24}
                   />
                 </a>
               </div>

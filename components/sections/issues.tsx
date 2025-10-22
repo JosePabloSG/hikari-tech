@@ -23,7 +23,7 @@ const problems = [
   {
     icon: Wrench,
     title: "Aplicaciones internas ineficientes",
-    description: "Herramientas que no se ajustan al proceso real y obligan a &quot;parches&quot; diarios.",
+    description: "Herramientas que no se ajustan al proceso real y obligan a soluciones temporales.",
   },
   {
     icon: BarChart3,

@@ -90,7 +90,7 @@ export default function Hero() {
             </div>
 
             <p className="text-lg font-inter text-muted-foreground leading-relaxed max-w-lg">
-              Ayudamos a empresas medianas de Costa Rica a superar la ineficiencia de sus procesos manuales mediante
+              Ayudamos a empresas de Costa Rica a superar la ineficiencia de sus procesos manuales mediante
               soluciones tecnológicas confiables.
             </p>
             </div>

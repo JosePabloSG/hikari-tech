@@ -7,7 +7,7 @@ import { OrganizationStructuredData, WebsiteStructuredData, ServiceStructuredDat
 
 export const metadata: Metadata = generateSEOMetadata({
   title: "HIKARI Tech - Soluciones Tecnológicas para Empresas en Costa Rica",
-  description: "Transformamos empresas costarricenses con soluciones tecnológicas innovadoras. Desarrollo web, aplicaciones móviles, automatización y consultoría IT para empresas medianas.",
+  description: "Transformamos empresas costarricenses con soluciones tecnológicas innovadoras. Desarrollo web, aplicaciones móviles, automatización y consultoría IT para empresas.",
   keywords: [
     "desarrollo web Costa Rica",
     "soluciones tecnológicas Costa Rica", 

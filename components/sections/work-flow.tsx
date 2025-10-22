@@ -45,7 +45,7 @@ export default function WorkFlow() {
                     Escuchamos tu necesidad
                   </h3>
                   <p className="text-muted-foreground font-inter leading-relaxed">
-                    Entendemos tu proceso actual, identificamos puntos de dolor y definimos objetivos claros. Una
+                    Entendemos tu proceso actual, identificamos áreas de mejora y definimos objetivos claros. Una
                     conversación profunda para conocer tu realidad.
                   </p>
                 </div>
@@ -59,7 +59,7 @@ export default function WorkFlow() {
                       Escuchamos tu necesidad
                     </h3>
                     <p className="text-muted-foreground font-inter leading-relaxed">
-                      Entendemos tu proceso actual, identificamos puntos de dolor y definimos objetivos claros. Una
+                      Entendemos tu proceso actual, identificamos áreas de mejora y definimos objetivos claros. Una
                       conversación profunda para conocer tu realidad.
                     </p>
                   </div>

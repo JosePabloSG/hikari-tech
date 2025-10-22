@@ -12,7 +12,7 @@ interface SEOProps {
 
 export function generateSEOMetadata({
   title = "HIKARI Tech - Soluciones Tecnológicas para Empresas en Costa Rica",
-  description = "Transformamos empresas costarricenses con soluciones tecnológicas innovadoras. Desarrollo web, aplicaciones móviles, automatización y consultoría IT para empresas medianas.",
+  description = "Transformamos empresas costarricenses con soluciones tecnológicas innovadoras. Desarrollo web, aplicaciones móviles, automatización y consultoría IT para empresas.",
   keywords = [
     "desarrollo web Costa Rica",
     "soluciones tecnológicas",
@@ -90,7 +90,7 @@ export const SEOConfigs = {
   
   problems: {
     title: "Problemas Empresariales que Resolvemos",
-    description: "Identificamos y solucionamos los principales desafíos tecnológicos que enfrentan las empresas medianas en Costa Rica. Procesos manuales, falta de automatización y más.",
+    description: "Identificamos y solucionamos los principales desafíos tecnológicos que enfrentan las empresas en Costa Rica. Procesos manuales, falta de automatización y más.",
     url: "https://hikaricr.tech#issues",
   },
   
@@ -108,7 +108,7 @@ export const SEOConfigs = {
   
   about: {
     title: "Acerca de HIKARI Tech - Empresa Tecnológica Costarricense",
-    description: "Conoce nuestra historia, misión y valores. Empresa costarricense especializada en transformación digital para empresas medianas.",
+    description: "Conoce nuestra historia, misión y valores. Empresa costarricense especializada en transformación digital para empresas.",
     url: "https://hikaricr.tech#about",
   },
   

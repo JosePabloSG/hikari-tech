@@ -51,7 +51,7 @@ export function OrganizationStructuredData() {
     "name": "HIKARI Tech",
     "url": "https://hikaricr.tech",
     "logo": "https://hikaricr.tech/icons/logo.svg",
-    "description": "Empresa costarricense especializada en soluciones tecnológicas para empresas medianas. Desarrollo web, aplicaciones móviles y automatización de procesos.",
+    "description": "Empresa costarricense especializada en soluciones tecnológicas para empresas. Desarrollo web, aplicaciones móviles y automatización de procesos.",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "Costa Rica",
