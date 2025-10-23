@@ -18,7 +18,7 @@ const problems = [
   {
     icon: Globe,
     title: "Webs lentas o desactualizadas",
-    description: "Páginas que cargan lento, no convierten y pierden oportunidades de venta.",
+    description: "Páginas que cargan lento o no reflejan la oferta real, perdiendo clientes potenciales.",
   },
   {
     icon: Wrench,

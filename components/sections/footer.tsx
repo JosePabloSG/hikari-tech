@@ -60,6 +60,8 @@ export default function Footer() {
     return window.innerWidth < 640 ? 9000 : 8000;
   });
 
+
+
   // Handle hydration
   useEffect(() => {
     setMounted(true);
@@ -308,15 +310,15 @@ export default function Footer() {
             {/* Contact Info */}
             <div className="flex flex-col items-end gap-4">
               <div className="flex flex-col sm:flex-row items-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" />
-                  <span>Costa Rica</span>
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4" />
+                <span>Costa Rica</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
                 <a 
-                  href="mailto:info@hikaricr.tech" 
-                  className="hover:text-primary transition-colors duration-300 cursor-pointer"
+                  href="mailto:info@hikaricr.tech"
+                  className="hover:text-primary transition-colors duration-300"
                 >
                   info@hikaricr.tech
                 </a>
@@ -356,22 +358,6 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
-          {/* Copyright and Legal */}
-          <div className="mt-8 pt-6 border-t border-border/20 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-            <p>© 2025 HIKARI Tech. Todos los derechos reservados.</p>
-            <div className="flex items-center gap-6">
-              <a href="#privacy" className="hover:text-primary transition-colors duration-300">
-                Política de Privacidad
-              </a>
-              <a href="#terms" className="hover:text-primary transition-colors duration-300">
-                Términos y Condiciones
-              </a>
-              <a href="#cookies" className="hover:text-primary transition-colors duration-300">
-                Configuración de Cookies
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </footer>
