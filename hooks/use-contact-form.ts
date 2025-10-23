@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ContactFormData, contactFormSchema } from "@/lib/validations/contact-form";
@@ -11,6 +11,7 @@ interface UseContactFormOptions {
 export const useContactForm = (options: UseContactFormOptions = {}) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
@@ -21,6 +22,28 @@ export const useContactForm = (options: UseContactFormOptions = {}) => {
       description: "",
     },
   });
+
+  // Resetear el estado del formulario después de mostrar mensajes de éxito o error
+  useEffect(() => {
+    if (submitStatus === 'success' || submitStatus === 'error') {
+      // Limpiar timeout anterior si existe
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+
+      // Resetear a 'idle' después de 5 segundos
+      timeoutRef.current = setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
+    }
+
+    // Cleanup: limpiar timeout cuando el componente se desmonte
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [submitStatus]);
 
   const submitForm = async (data: ContactFormData) => {
     setIsSubmitting(true);

@@ -140,7 +140,7 @@ export default function About() {
                 <div className="w-8 h-8 sm:w-6 sm:h-6 bg-muted rounded-lg flex items-center justify-center p-1 sm:p-0 group-hover:scale-110 transition-transform duration-300">
                   <Shield className="w-4 h-4 sm:w-3 sm:h-3 text-muted-foreground" />
                 </div>
-                <h4 className="text-base font-bold font-poppins text-foreground group-hover:text-primary transition-colors">
+                <h4 className="text-sm sm:text-base font-bold font-poppins text-foreground group-hover:text-primary transition-colors">
                   Transparencia
                 </h4>
               </div>
