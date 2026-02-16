@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import { Suspense } from "react"
 import { Button } from "@/components/ui/button"
-import { CheckCircle, Users, Settings, Rocket } from "lucide-react"
+import { Rocket } from "lucide-react"
 
 // Importar los componentes 3D dinámicamente para evitar problemas con SSR
 const CodeNodes = dynamic(() => import("@/components/ui/code-nodes"), {
@@ -54,8 +54,11 @@ export default function Hero() {
         }, 50)
         return () => clearTimeout(timeout)
       } else {
-        setCurrentTextIndex((prev) => (prev + 1) % typewriterTexts.length)
-        setIsTyping(true)
+        const timeout = setTimeout(() => {
+          setCurrentTextIndex((prev) => (prev + 1) % typewriterTexts.length)
+          setIsTyping(true)
+        }, 0)
+        return () => clearTimeout(timeout)
       }
     }
   }, [displayText, isTyping, currentTextIndex])

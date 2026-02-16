@@ -4,7 +4,8 @@ import { CheckCircle, Globe, Shield, TrendingUp, Zap } from "lucide-react";
 import { SectionHeader } from "./shared";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { useState, useEffect, Suspense } from "react";
+import { Suspense } from "react";
+import { useMounted } from "@/hooks/use-mounted";
 import dynamic from "next/dynamic";
 
 const StarsBackground = dynamic(() => import("@/components/ui/stars-background"), {
@@ -13,12 +14,7 @@ const StarsBackground = dynamic(() => import("@/components/ui/stars-background")
 
 export default function About() {
   const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  // Handle hydration
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   // Get the appropriate logo based on theme
   const getLogoSrc = () => {

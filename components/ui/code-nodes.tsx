@@ -16,15 +16,22 @@ function NodesScene() {
 
   // Generamos las posiciones de los nodos y las líneas de forma procedural
   const { nodes, lines } = useMemo(() => {
+    // Seeded pseudo-random number generator for deterministic output
+    let seed = 42;
+    const seededRandom = () => {
+      seed = (seed * 16807) % 2147483647;
+      return (seed - 1) / 2147483646;
+    };
+
     const nodeCount = 50;
     const tempNodes = [];
     const tempLines = [];
     const radius = 3; // Reducido para que se vea completo en el viewport
 
-    // Crear nodos en posiciones aleatorias dentro de una esfera
+    // Crear nodos en posiciones deterministas dentro de una esfera
     for (let i = 0; i < nodeCount; i++) {
-      const t = Math.random() * 2 * Math.PI;
-      const phi = Math.acos(2 * Math.random() - 1);
+      const t = seededRandom() * 2 * Math.PI;
+      const phi = Math.acos(2 * seededRandom() - 1);
       const x = radius * Math.sin(phi) * Math.cos(t);
       const y = radius * Math.sin(phi) * Math.sin(t);
       const z = radius * Math.cos(phi);

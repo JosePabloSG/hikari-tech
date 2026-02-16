@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useMounted } from "@/hooks/use-mounted";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useTheme } from "next-themes";
@@ -54,18 +55,11 @@ export default function Footer() {
   const [currentText, setCurrentText] = useState(0);
   const [isGlitching, setIsGlitching] = useState(false);
   const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const [rotationMs, setRotationMs] = useState(() => {
     if (typeof window === "undefined") return 8000;
     return window.innerWidth < 640 ? 9000 : 8000;
   });
-
-
-
-  // Handle hydration
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Get the appropriate logo based on theme
   const getLogoSrc = () => {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useMounted } from "@/hooks/use-mounted";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Menu, X, ArrowRight } from "lucide-react";
@@ -23,15 +24,10 @@ export default function Navbar() {
   // removed local mobile menu state to rely solely on global store
   const [activeSection, setActiveSection] = useState("hero");
   const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const setMobileMenuOpen = useStore((s: StoreState) => s.setMobileMenuOpen);
   const isMobileMenuOpen = useStore((s: StoreState) => s.isMobileMenuOpen);
   const toggleMobileMenu = useStore((s: StoreState) => s.toggleMobileMenu);
-
-  // Handle hydration
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Get the appropriate logo based on theme
   const getLogoSrc = () => {
