@@ -21,22 +21,26 @@ export default function FeatureCard({
 }: FeatureCardProps) {
   return (
     <div
-      className={`group bg-card rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-border ${hoverEffect ? "hover:-translate-y-2 hover:border-primary/20" : ""
+      className={`group relative bg-card rounded-xl p-8 transition-all duration-300 border border-border ${hoverEffect ? "hover:border-primary/30" : ""
         } ${className}`}
     >
+      {/* Luminous left accent — visible on hover */}
+      {hoverEffect && (
+        <div className="absolute left-0 top-6 bottom-6 w-0.5 bg-primary/0 group-hover:bg-primary rounded-full transition-colors duration-300" />
+      )}
       <div
-        className={`w-12 h-12 ${iconBgColor} rounded-lg flex items-center justify-center mb-6 transition-all ${hoverEffect ? "group-hover:bg-muted/80" : ""
+        className={`w-11 h-11 ${iconBgColor} rounded-lg flex items-center justify-center mb-6 transition-colors duration-300 ${hoverEffect ? "group-hover:bg-primary/10" : ""
           }`}
       >
         <Icon
-          className={`w-6 h-6 ${iconColor} ${hoverEffect ? "group-hover:text-foreground" : ""
+          className={`w-5 h-5 ${iconColor} transition-colors duration-300 ${hoverEffect ? "group-hover:text-primary" : ""
             }`}
         />
       </div>
-      <h3 className="text-xl font-bold font-poppins text-foreground mb-3">
+      <h3 className="text-lg font-semibold font-poppins text-foreground mb-3 tracking-tight">
         {title}
       </h3>
-      <p className="text-muted-foreground font-inter leading-relaxed">
+      <p className="text-muted-foreground font-inter leading-relaxed text-[0.938rem]">
         {description}
       </p>
     </div>

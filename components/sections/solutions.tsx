@@ -34,7 +34,7 @@ const solutions = [
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden">
+    <section id="solutions" className="py-20 lg:py-32 relative bg-muted/30 overflow-hidden">
       <Suspense fallback={null}>
         <StarsBackground />
       </Suspense>
@@ -44,7 +44,7 @@ export default function Solutions() {
           description="Diseñamos y construimos soluciones a la medida para que tu operación sea más rápida, clara y confiable."
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {solutions.map((solution, index) => (
             <FeatureCard
               key={index}

@@ -34,7 +34,7 @@ const problems = [
 
 export default function Issues() {
   return (
-    <section id="issues" className="py-16 lg:py-24 pb-32 relative overflow-hidden">
+    <section id="issues" className="py-20 lg:py-32 relative overflow-hidden">
       <Suspense fallback={null}>
         <StarsBackground />
       </Suspense>
@@ -44,7 +44,7 @@ export default function Issues() {
           description="Estos son los frenos más comunes que vemos en empresas de Costa Rica. Si te identificás con alguno, podemos ayudar."
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
           {problems.map((problem, index) => (
             <FeatureCard
               key={index}

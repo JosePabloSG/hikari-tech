@@ -21,7 +21,6 @@ const navItems = [
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  // removed local mobile menu state to rely solely on global store
   const [activeSection, setActiveSection] = useState("hero");
   const { theme, resolvedTheme } = useTheme();
   const mounted = useMounted();
@@ -29,24 +28,21 @@ export default function Navbar() {
   const isMobileMenuOpen = useStore((s: StoreState) => s.isMobileMenuOpen);
   const toggleMobileMenu = useStore((s: StoreState) => s.toggleMobileMenu);
 
-  // Get the appropriate logo based on theme
   const getLogoSrc = () => {
-    if (!mounted) return "/icons/hikari_dark.svg"; // Default during SSR
+    if (!mounted) return "/icons/hikari_dark.svg";
     const currentTheme = resolvedTheme || theme;
     return currentTheme === "dark" ? "/icons/hikari_dark.svg" : "/icons/hikari_light.svg";
   };
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle active section detection
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map(item => item.href.replace("#", ""));
@@ -73,7 +69,7 @@ export default function Navbar() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-    setMobileMenuOpen(false)
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -84,112 +80,99 @@ export default function Navbar() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-background/80 backdrop-blur-md shadow-lg border-b border-border/50"
+            ? "bg-background/80 backdrop-blur-md border-b border-border/50"
             : "bg-transparent"
         }`}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+          <div className="flex items-center justify-between h-18 lg:h-22">
             {/* Logo */}
             <motion.div
               className="flex items-center gap-3 cursor-pointer"
               onClick={() => scrollToSection("#hero")}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               <div className="w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center">
                 <Image src={getLogoSrc()} alt="HIKARI TECH" width={40} height={40} className="p-2" />
               </div>
               <div className="hidden sm:block">
-                <h1 className="font-bold font-poppins text-foreground text-lg lg:text-xl">
+                <h1 className="font-semibold font-poppins text-foreground text-lg lg:text-xl tracking-tight">
                   HIKARI Tech
                 </h1>
-                <p className="text-xs text-muted-foreground">Soluciones Tecnológicas</p>
               </div>
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
+            <div className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => (
-                <motion.button
+                <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className={`relative cursor-pointer px-4 py-2 rounded-lg font-inter font-medium transition-all duration-300 group ${
+                  className={`relative cursor-pointer px-4 py-2 font-inter text-sm font-medium transition-colors duration-200 ${
                     activeSection === item.href.replace("#", "")
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                 >
-                  <span className="relative z-10">{item.name}</span>
-                  
-                  {/* Active indicator */}
+                  <span>{item.name}</span>
+
+                  {/* Clean underline indicator */}
                   {activeSection === item.href.replace("#", "") && (
                     <motion.div
                       layoutId="activeSection"
-                      className="absolute inset-0 bg-primary/10 rounded-lg"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary rounded-full"
+                      transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                     />
                   )}
-                  
-                  {/* Hover effect */}
-                  <div className="absolute inset-0 bg-primary/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.button>
+                </button>
               ))}
             </div>
 
             {/* CTA Button */}
             <div className="hidden lg:flex items-center gap-4">
               <ThemeToggle showDropdown={true} />
-              <motion.button
+              <button
                 onClick={() => scrollToSection("#contacto")}
-                className="cursor-pointer bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 rounded-xl font-inter font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl group relative overflow-hidden"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="cursor-pointer bg-primary text-primary-foreground px-5 py-2 rounded-lg font-inter text-sm font-medium transition-all duration-200 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 flex items-center gap-2"
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  Comenzar Proyecto
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-              </motion.button>
+                Comenzar Proyecto
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
 
             {/* Mobile controls */}
             <div className="lg:hidden flex items-center gap-2">
               <ThemeToggle showDropdown={false} />
               <motion.button
-                className="p-2 rounded-lg hover:bg-card transition-colors duration-300"
-                onClick={() => {
-                  toggleMobileMenu()
-                }}
+                className="p-2 rounded-lg hover:bg-muted transition-colors duration-200"
+                onClick={() => toggleMobileMenu()}
                 whileTap={{ scale: 0.95 }}
               >
-              <AnimatePresence mode="wait">
-                {isMobileMenuOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <X className="w-6 h-6 text-foreground" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Menu className="w-6 h-6 text-foreground" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
+                <AnimatePresence mode="wait">
+                  {isMobileMenuOpen ? (
+                    <motion.div
+                      key="close"
+                      initial={{ rotate: -90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <X className="w-6 h-6 text-foreground" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="menu"
+                      initial={{ rotate: 90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: -90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Menu className="w-6 h-6 text-foreground" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.button>
             </div>
           </div>
         </div>
@@ -197,25 +180,23 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
-            {isMobileMenuOpen && (
+        {isMobileMenuOpen && (
           <>
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden"
-              onClick={() => {
-                setMobileMenuOpen(false)
-              }}
+              className="fixed inset-0 bg-background/60 backdrop-blur-sm z-40 lg:hidden"
+              onClick={() => setMobileMenuOpen(false)}
             />
 
             {/* Mobile Menu */}
-                    <motion.div
+            <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 20, stiffness: 300 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="fixed top-0 right-0 h-full w-80 max-w-[80vw] bg-card border-l border-border z-50 lg:hidden"
             >
               <div className="flex flex-col h-full">
@@ -226,7 +207,7 @@ export default function Navbar() {
                       <span className="font-bold text-primary-foreground text-lg">H</span>
                     </div>
                     <div>
-                      <h2 className="font-bold font-poppins text-foreground">HIKARI Tech</h2>
+                      <h2 className="font-semibold font-poppins text-foreground tracking-tight">HIKARI Tech</h2>
                       <p className="text-xs text-muted-foreground">Soluciones Tecnológicas</p>
                     </div>
                   </div>
@@ -234,25 +215,25 @@ export default function Navbar() {
 
                 {/* Mobile Navigation */}
                 <div className="flex-1 py-6">
-                  <div className="space-y-2 px-6">
+                  <div className="space-y-1 px-4">
                     {navItems.map((item, index) => (
                       <motion.button
                         key={item.name}
                         initial={{ x: 50, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: index * 0.1 }}
+                        transition={{ delay: index * 0.08 }}
                         onClick={() => {
-                          scrollToSection(item.href)
-                          setMobileMenuOpen(false)
+                          scrollToSection(item.href);
+                          setMobileMenuOpen(false);
                         }}
-                        className={`w-full text-left cursor-pointer px-4 py-3 rounded-xl font-inter font-medium transition-all duration-300 group flex items-center justify-between ${
+                        className={`w-full text-left cursor-pointer px-4 py-3 rounded-lg font-inter text-sm font-medium transition-all duration-200 group flex items-center justify-between ${
                           activeSection === item.href.replace("#", "")
-                            ? "bg-primary/10 text-primary"
-                            : "text-muted-foreground hover:text-foreground hover:bg-card"
+                            ? "bg-primary/8 text-primary"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted"
                         }`}
                       >
                         <span>{item.name}</span>
-                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transform translate-x-[-4px] group-hover:translate-x-0 transition-all duration-300" />
+                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                       </motion.button>
                     ))}
                   </div>
@@ -261,17 +242,14 @@ export default function Navbar() {
                 {/* Mobile CTA */}
                 <div className="p-6 border-t border-border">
                   <motion.button
-                    initial={{ y: 50, opacity: 0 }}
+                    initial={{ y: 30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.5 }}
+                    transition={{ delay: 0.4 }}
                     onClick={() => scrollToSection("#contacto")}
-                    className="w-full cursor-pointer bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-xl font-inter font-semibold transition-all duration-300 hover:scale-105 group relative overflow-hidden"
+                    className="w-full cursor-pointer bg-primary text-primary-foreground px-6 py-3 rounded-lg font-inter text-sm font-medium transition-all duration-200 hover:bg-primary/90 flex items-center justify-center gap-2"
                   >
-                    <span className="relative z-10 flex items-center justify-center gap-2">
-                      Comenzar Proyecto
-                      <ArrowRight className="w-4 h-4" />
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                    Comenzar Proyecto
+                    <ArrowRight className="w-4 h-4" />
                   </motion.button>
                 </div>
               </div>
@@ -281,7 +259,7 @@ export default function Navbar() {
       </AnimatePresence>
 
       {/* Spacer for fixed navbar */}
-      <div className="h-16 lg:h-20" />
+      <div className="h-18 lg:h-22" />
     </>
   );
 }

@@ -4,81 +4,81 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color tokens to match HIKARI Tech brand */
-  --background: oklch(1 0 0); /* White */
-  --foreground: oklch(0.205 0 0); /* Dark Gray #2A2E30 */
-  --card: oklch(0.98 0 0); /* Light Gray */
-  --card-foreground: oklch(0.205 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.205 0 0);
+  /* Luminous Precision — warm off-white foundation */
+  --background: oklch(0.985 0.002 90); /* Warm off-white */
+  --foreground: oklch(0.175 0.005 285); /* Deep warm charcoal */
+  --card: oklch(0.975 0.003 90); /* Subtle warm surface */
+  --card-foreground: oklch(0.175 0.005 285);
+  --popover: oklch(0.985 0.002 90);
+  --popover-foreground: oklch(0.175 0.005 285);
   --primary: oklch(0.646 0.222 41.116); /* HIKARI Orange #F46530 */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.828 0.189 84.429); /* Warm Yellow accent */
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.98 0 0);
-  --muted-foreground: oklch(0.556 0 0); /* Gray Neutral #545454 */
+  --secondary: oklch(0.955 0.008 85); /* Warm light neutral */
+  --secondary-foreground: oklch(0.175 0.005 285);
+  --muted: oklch(0.955 0.005 90); /* Warm muted */
+  --muted-foreground: oklch(0.505 0.01 280); /* Warm slate */
   --accent: oklch(0.646 0.222 41.116); /* HIKARI Orange */
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.98 0 0);
-  --ring: oklch(0.646 0.222 41.116 / 0.5); /* HIKARI Orange with opacity */
+  --border: oklch(0.915 0.005 90); /* Warm subtle border */
+  --input: oklch(0.955 0.005 90);
+  --ring: oklch(0.646 0.222 41.116 / 0.4);
   --chart-1: oklch(0.828 0.189 84.429);
   --chart-2: oklch(0.646 0.222 41.116);
-  --chart-3: oklch(0.205 0 0);
-  --chart-4: oklch(0.98 0 0);
-  --chart-5: oklch(1 0 0);
-  --radius: 0.5rem; /* Updated radius for modern feel */
-  --sidebar: oklch(0.98 0 0);
-  --sidebar-foreground: oklch(0.205 0 0);
+  --chart-3: oklch(0.175 0.005 285);
+  --chart-4: oklch(0.955 0.005 90);
+  --chart-5: oklch(0.985 0.002 90);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.955 0.005 90);
+  --sidebar-foreground: oklch(0.175 0.005 285);
   --sidebar-primary: oklch(0.646 0.222 41.116);
   --sidebar-primary-foreground: oklch(1 0 0);
   --sidebar-accent: oklch(0.828 0.189 84.429);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.646 0.222 41.116 / 0.5);
+  --sidebar-accent-foreground: oklch(0.175 0.005 285);
+  --sidebar-border: oklch(0.915 0.005 90);
+  --sidebar-ring: oklch(0.646 0.222 41.116 / 0.4);
   --font-inter: "Inter", sans-serif;
   --font-poppins: "Poppins", serif;
 }
 
 .dark {
-  --background: oklch(0.205 0 0); /* Dark Gray */
-  --foreground: oklch(1 0 0);
-  --card: oklch(0.269 0 0);
-  --card-foreground: oklch(1 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(1 0 0);
+  /* Rich charcoal with warm undertone */
+  --background: oklch(0.145 0.005 285); /* Rich deep charcoal */
+  --foreground: oklch(0.95 0.005 90); /* Warm white */
+  --card: oklch(0.185 0.007 285); /* Elevated surface */
+  --card-foreground: oklch(0.95 0.005 90);
+  --popover: oklch(0.165 0.006 285);
+  --popover-foreground: oklch(0.95 0.005 90);
   --primary: oklch(0.646 0.222 41.116); /* HIKARI Orange */
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.828 0.189 84.429);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  --secondary-foreground: oklch(0.175 0.005 285);
+  --muted: oklch(0.215 0.008 285); /* Warm dark muted */
+  --muted-foreground: oklch(0.635 0.01 280); /* Warm slate lighter */
   --accent: oklch(0.646 0.222 41.116);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.646 0.222 41.116 / 0.5);
+  --border: oklch(0.235 0.008 285); /* Warm dark border */
+  --input: oklch(0.215 0.008 285);
+  --ring: oklch(0.646 0.222 41.116 / 0.4);
   --chart-1: oklch(0.828 0.189 84.429);
   --chart-2: oklch(0.646 0.222 41.116);
-  --chart-3: oklch(1 0 0);
-  --chart-4: oklch(0.269 0 0);
-  --chart-5: oklch(0.205 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(1 0 0);
+  --chart-3: oklch(0.95 0.005 90);
+  --chart-4: oklch(0.215 0.008 285);
+  --chart-5: oklch(0.145 0.005 285);
+  --sidebar: oklch(0.145 0.005 285);
+  --sidebar-foreground: oklch(0.95 0.005 90);
   --sidebar-primary: oklch(0.646 0.222 41.116);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.646 0.222 41.116 / 0.5);
+  --sidebar-accent: oklch(0.215 0.008 285);
+  --sidebar-accent-foreground: oklch(0.95 0.005 90);
+  --sidebar-border: oklch(0.235 0.008 285);
+  --sidebar-ring: oklch(0.646 0.222 41.116 / 0.4);
 }
 
 @theme inline {
-  /* Updated font configuration for HIKARI Tech fonts */
   --font-sans: var(--font-inter);
   --font-serif: var(--font-poppins);
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -129,7 +129,7 @@
   }
 }
 
-/* Added custom keyframes for typewriter and development animations */
+/* Typewriter animation */
 @keyframes typewriter {
   from {
     width: 0;
@@ -159,30 +159,6 @@
   }
 }
 
-@keyframes pulse-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 5px oklch(0.646 0.222 41.116 / 0.3);
-  }
-  50% {
-    box-shadow: 0 0 20px oklch(0.646 0.222 41.116 / 0.6);
-  }
-}
-
-@keyframes code-flow {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
 .typewriter {
   overflow: hidden;
   border-right: 3px solid oklch(0.646 0.222 41.116);
@@ -193,12 +169,4 @@
 
 .float-animation {
   animation: float 3s ease-in-out infinite;
-}
-
-.pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.code-flow {
-  animation: code-flow 4s ease-in-out infinite;
 }
