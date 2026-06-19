@@ -1,19 +1,13 @@
 "use client";
 
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
 import { BarChart3, Clock, Globe, Wrench } from "lucide-react";
-import { SectionHeader, FeatureCard } from "./shared";
-
-const StarsBackground = dynamic(() => import("@/components/ui/stars-background"), {
-  ssr: false,
-});
+import { ListRow } from "./shared";
 
 const problems = [
   {
     icon: Clock,
     title: "Procesos manuales que consumen tiempo",
-    description: "Horas en Excel/WhatsApp, doble digitación y errores que encarecen la operación.",
+    description: "Horas en Excel y WhatsApp, doble digitación y errores que encarecen la operación.",
   },
   {
     icon: Globe,
@@ -34,33 +28,23 @@ const problems = [
 
 export default function Issues() {
   return (
-    <section id="issues" className="py-20 lg:py-32 relative overflow-hidden">
-      <Suspense fallback={null}>
-        <StarsBackground />
-      </Suspense>
-      <div className="container mx-auto px-4 relative z-10">
-        <SectionHeader
-          title="Problemas que resolvemos"
-          description="Estos son los frenos más comunes que vemos en empresas de Costa Rica. Si te identificás con alguno, podemos ayudar."
-        />
+    <section id="issues" className="relative overflow-hidden py-24 lg:py-32">
+      <div className="container mx-auto px-4 relative">
+        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20">
+          <div className="lg:sticky lg:top-32 lg:self-start space-y-5">
+            <h2 className="text-3xl lg:text-4xl font-bold font-poppins text-foreground tracking-[-0.025em] text-balance">
+              Lo que vemos una y otra vez en empresas costarricenses
+            </h2>
+            <p className="text-muted-foreground font-inter leading-relaxed max-w-sm">
+              Si te identificás con alguno de estos puntos, no estás solo — y tiene arreglo.
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
-          {problems.map((problem, index) => (
-            <FeatureCard
-              key={index}
-              icon={problem.icon}
-              title={problem.title}
-              description={problem.description}
-              hoverEffect={true}
-            />
-          ))}
-        </div>
-
-        <div className="text-center">
-          <p className="text-muted-foreground font-inter max-w-2xl mx-auto">
-            Sabemos que estos problemas frenan el crecimiento. Por eso fundamos HIKARI TECH: para resolverlos con
-            tecnología moderna.
-          </p>
+          <div className="divide-y divide-border">
+            {problems.map((problem) => (
+              <ListRow key={problem.title} icon={problem.icon} title={problem.title} description={problem.description} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

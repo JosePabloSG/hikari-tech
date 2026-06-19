@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
-import dynamic from "next/dynamic";
+import { useState, useEffect } from "react";
 import { useMounted } from "@/hooks/use-mounted";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -11,10 +10,6 @@ import {
   Mail,
   ArrowRight,
 } from "lucide-react";
-
-const StarsBackground = dynamic(() => import("@/components/ui/stars-background"), {
-  ssr: false,
-});
 
 const footerSections = {
   empresa: {
@@ -88,9 +83,6 @@ export default function Footer() {
 
   return (
     <footer className="bg-card border-t border-border relative overflow-hidden">
-      <Suspense fallback={null}>
-        <StarsBackground />
-      </Suspense>
       <div className="container mx-auto px-4 relative z-10">
         {/* Hero Section */}
         <div className="py-16 lg:py-24 border-b border-border/50">

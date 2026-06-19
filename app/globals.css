@@ -129,44 +129,10 @@
   }
 }
 
-/* Typewriter animation */
-@keyframes typewriter {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: oklch(0.646 0.222 41.116);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.typewriter {
-  overflow: hidden;
-  border-right: 3px solid oklch(0.646 0.222 41.116);
-  white-space: nowrap;
-  margin: 0 auto;
-  animation: typewriter 3s steps(40, end), blink-caret 0.75s step-end infinite;
-}
-
-.float-animation {
-  animation: float 3s ease-in-out infinite;
-}

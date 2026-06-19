@@ -1,60 +1,118 @@
 "use client";
 
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
-import { Cog, Shield, TrendingUp, Zap } from "lucide-react";
-import { SectionHeader, FeatureCard } from "./shared";
-
-const StarsBackground = dynamic(() => import("@/components/ui/stars-background"), {
-  ssr: false,
-});
+import { useRef, useState } from "react";
+import { ChevronLeft, ChevronRight, Gauge, Cog, Shield, Zap } from "lucide-react";
 
 const solutions = [
   {
     icon: Zap,
-    title: "Automatización de procesos internos",
-    description: "Digitalizamos y conectamos tus flujos críticos (ventas, compras, inventario, cobros) para reducir tiempos y errores.",
-  },
-  {
-    icon: Cog,
-    title: "Sistemas web a la medida",
-    description: "Aplicaciones y paneles hechos a tu proceso, integrados con tus herramientas actuales.",
+    title: "Automatización de tus procesos",
+    description: "Conectamos ventas, compras, inventario y cobros para que dejes de hacer todo a mano.",
   },
   {
     icon: Shield,
-    title: "Velocidad y seguridad en tu sitio",
-    description: "Mejoramos desempeño (Core Web Vitals) y buenas prácticas de seguridad para más conversión y menos caídas.",
+    title: "Sitios rápidos y seguros",
+    description: "Mejoramos velocidad y buenas prácticas de seguridad para convertir más visitas en clientes.",
   },
   {
-    icon: TrendingUp,
-    title: "Continuidad y escalabilidad",
-    description: "Planes de continuidad (BCP/DR) y arquitectura lista para crecer sin fricciones.",
+    icon: Cog,
+    title: "Sistemas hechos a tu medida",
+    description: "Construimos paneles y aplicaciones que se ajustan a tu proceso real, no al revés.",
+  },
+  {
+    icon: Gauge,
+    title: "Visibilidad real de tu negocio",
+    description: "Centralizamos tus datos en un panel claro para decidir con información, no a ciegas.",
   },
 ];
 
 export default function Solutions() {
-  return (
-    <section id="solutions" className="py-20 lg:py-32 relative bg-muted/30 overflow-hidden">
-      <Suspense fallback={null}>
-        <StarsBackground />
-      </Suspense>
-      <div className="container mx-auto px-4 relative z-10">
-        <SectionHeader
-          title="Nuestra propuesta"
-          description="Diseñamos y construimos soluciones a la medida para que tu operación sea más rápida, clara y confiable."
-        />
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {solutions.map((solution, index) => (
-            <FeatureCard
-              key={index}
-              icon={solution.icon}
-              title={solution.title}
-              description={solution.description}
-              hoverEffect={true}
-            />
+  const scrollToIndex = (index: number) => {
+    const scroller = scrollerRef.current;
+    const child = scroller?.children[index] as HTMLElement | undefined;
+    if (scroller && child) {
+      scroller.scrollTo({ left: child.offsetLeft - scroller.offsetLeft, behavior: "smooth" });
+    }
+  };
+
+  const handleScroll = () => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+    const index = Math.round(scroller.scrollLeft / (scroller.scrollWidth / solutions.length));
+    setActive(Math.min(solutions.length - 1, Math.max(0, index)));
+  };
+
+  return (
+    <section id="solutions" className="relative overflow-hidden py-24 lg:py-32">
+      <div className="container mx-auto px-4 relative">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+          <div className="max-w-xl space-y-3">
+            <h2 className="text-3xl lg:text-4xl font-bold font-poppins text-foreground tracking-[-0.025em] text-balance">
+              Así lo resolvemos
+            </h2>
+            <p className="text-muted-foreground font-inter leading-relaxed">
+              Una solución concreta para cada problema — sin vueltas ni jerga técnica.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => scrollToIndex(Math.max(0, active - 1))}
+              aria-label="Solución anterior"
+              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors duration-200 cursor-pointer"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToIndex(Math.min(solutions.length - 1, active + 1))}
+              aria-label="Siguiente solución"
+              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors duration-200 cursor-pointer"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={scrollerRef}
+          onScroll={handleScroll}
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 scrollbar-none"
+        >
+          {solutions.map((solution) => (
+            <div key={solution.title} className="snap-start shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] border-t-2 border-primary/40 pt-6">
+              <solution.icon className="w-6 h-6 text-primary mb-4" />
+              <h3 className="text-lg font-semibold font-poppins text-foreground tracking-tight mb-2">{solution.title}</h3>
+              <p className="text-muted-foreground font-inter leading-relaxed text-[0.938rem]">{solution.description}</p>
+            </div>
           ))}
         </div>
+
+        <div className="flex items-center gap-2 mt-2">
+          {solutions.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => scrollToIndex(index)}
+              aria-label={`Ir a la solución ${index + 1}`}
+              className="group py-2 cursor-pointer"
+            >
+              <span
+                className={`block h-1.5 rounded-full transition-all duration-300 ${
+                  active === index ? "bg-primary w-8" : "bg-border w-1.5 group-hover:bg-primary/40"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+
+        <p className="text-muted-foreground font-inter leading-relaxed mt-10 max-w-lg">
+          Por eso existe HIKARI Tech: para que la tecnología trabaje para vos, no al revés.
+        </p>
       </div>
     </section>
   );

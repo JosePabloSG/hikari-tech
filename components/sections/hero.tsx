@@ -1,139 +1,63 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import { Suspense } from "react"
 import { Button } from "@/components/ui/button"
-import { Rocket, ArrowRight } from "lucide-react"
+import { ArrowRight, Compass } from "lucide-react"
 
-const CodeNodes = dynamic(() => import("@/components/ui/code-nodes"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-48 h-48 rounded-full bg-muted/50 animate-pulse" />
-    </div>
-  ),
-})
-
-const StarsBackground = dynamic(() => import("@/components/ui/stars-background"), {
+const BeaconBot = dynamic(() => import("@/components/ui/beacon-bot"), {
   ssr: false,
 })
 
-const typewriterTexts = [
-  "Transformamos procesos manuales",
-  "Creamos soluciones tecnológicas",
-  "Optimizamos tu productividad",
-  "Impulsamos tu crecimiento",
-]
+const scrollToSection = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" })
+}
 
 export default function Hero() {
-  const [currentTextIndex, setCurrentTextIndex] = useState(0)
-  const [displayText, setDisplayText] = useState("")
-  const [isTyping, setIsTyping] = useState(true)
-
-  useEffect(() => {
-    const currentText = typewriterTexts[currentTextIndex]
-
-    if (isTyping) {
-      if (displayText.length < currentText.length) {
-        const timeout = setTimeout(() => {
-          setDisplayText(currentText.slice(0, displayText.length + 1))
-        }, 100)
-        return () => clearTimeout(timeout)
-      } else {
-        const timeout = setTimeout(() => {
-          setIsTyping(false)
-        }, 2000)
-        return () => clearTimeout(timeout)
-      }
-    } else {
-      if (displayText.length > 0) {
-        const timeout = setTimeout(() => {
-          setDisplayText(displayText.slice(0, -1))
-        }, 50)
-        return () => clearTimeout(timeout)
-      } else {
-        const timeout = setTimeout(() => {
-          setCurrentTextIndex((prev) => (prev + 1) % typewriterTexts.length)
-          setIsTyping(true)
-        }, 0)
-        return () => clearTimeout(timeout)
-      }
-    }
-  }, [displayText, isTyping, currentTextIndex])
-
   return (
-    <section id="hero" className="relative h-screen min-h-[700px] overflow-hidden">
-      <Suspense fallback={null}>
-        <StarsBackground />
-      </Suspense>
+    <section id="hero" className="relative overflow-hidden py-28 lg:py-0 lg:min-h-[88vh] flex items-center">
+      <div className="container mx-auto px-4 relative z-10 w-full">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-8 items-center">
+          <div className="max-w-2xl space-y-8">
+            <h1 className="text-[2.5rem] sm:text-5xl lg:text-6xl font-bold font-poppins text-foreground leading-[1.08] tracking-[-0.03em] text-balance">
+              Tu negocio no debería depender de Excel y WhatsApp para funcionar.
+            </h1>
 
-      <div className="container mx-auto px-4 h-full relative z-10">
-        <div className="grid md:grid-cols-2 gap-8 h-full items-center">
-          {/* Left Side - Text Content */}
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <div className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-border bg-card/80 text-muted-foreground text-sm font-medium font-inter">
-                <Rocket className="w-3.5 h-3.5 text-primary mr-2" />
-                Innovación Tecnológica en Costa Rica
-              </div>
+            <p className="text-lg lg:text-xl font-inter text-muted-foreground leading-relaxed max-w-xl text-pretty">
+              Construimos los sistemas, sitios y automatizaciones que tu operación necesita,
+              explicado en español simple, sin tecnicismos ni promesas vacías.
+            </p>
 
-              <h1 className="text-5xl lg:text-7xl font-bold font-poppins text-foreground leading-[1.05] tracking-tight">
-                <span className="block">HIKARI</span>
-                <span className="block text-primary">TECH</span>
-              </h1>
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Button
+                size="lg"
+                className="cursor-pointer bg-primary hover:bg-primary/90 text-primary-foreground font-inter font-medium px-8 py-3 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-primary/20 group"
+                onClick={() => scrollToSection("contacto")}
+              >
+                Contanos tu problema
+                <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" />
+              </Button>
 
-              <div className="h-16 flex items-center">
-                <p className="text-xl lg:text-2xl font-medium font-poppins text-muted-foreground">
-                  {displayText}
-                  <span className="inline-block w-0.5 h-6 bg-primary ml-1 animate-pulse"></span>
-                </p>
-              </div>
-
-              <p className="text-base lg:text-lg font-inter text-muted-foreground leading-relaxed max-w-lg">
-                Ayudamos a empresas de Costa Rica a superar la ineficiencia de sus procesos manuales mediante
-                soluciones tecnológicas confiables.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 variant="outline"
                 size="lg"
-                className="border-primary cursor-pointer text-primary hover:bg-primary hover:text-primary-foreground font-inter font-medium px-8 py-3 rounded-lg transition-all duration-200 bg-transparent group"
-                onClick={() => {
-                  const ctaSection = document.getElementById('contacto');
-                  if (ctaSection) {
-                    ctaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                }}
+                className="cursor-pointer border-primary text-primary hover:bg-primary hover:text-primary-foreground font-inter font-medium px-8 py-3 rounded-lg transition-all duration-200 bg-transparent group"
+                onClick={() => scrollToSection("workflow")}
               >
-                Conversemos sobre tus Necesidades
-                <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200" />
+                Así trabajamos
               </Button>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border/50">
-              <div>
-                <div className="text-3xl font-bold font-poppins text-primary tracking-tight">100%</div>
-                <div className="text-sm font-inter text-muted-foreground mt-1">Compromiso</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold font-poppins text-primary tracking-tight">0</div>
-                <div className="text-sm font-inter text-muted-foreground mt-1">Días de Espera</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold font-poppins text-primary tracking-tight">24/7</div>
-                <div className="text-sm font-inter text-muted-foreground mt-1">Disponibilidad</div>
-              </div>
-            </div>
+            <p className="flex items-center gap-2 text-sm font-inter text-muted-foreground pt-1">
+              <Compass className="w-4 h-4 text-primary" />
+              Hablamos claro, en español tico, sin letra pequeña.
+            </p>
           </div>
 
-          {/* Right Side - 3D Nodes Network */}
-          <div className="relative w-full h-full hidden md:block">
-            <Suspense fallback={null}>
-              <CodeNodes />
+          <div className="relative hidden lg:block h-[480px]">
+            <div className="absolute inset-0 m-auto w-72 h-72 rounded-full bg-primary/25 blur-[90px]" />
+            <Suspense fallback={<div className="absolute inset-0 m-auto w-40 h-40 rounded-full bg-muted/40 animate-pulse" />}>
+              <BeaconBot />
             </Suspense>
           </div>
         </div>

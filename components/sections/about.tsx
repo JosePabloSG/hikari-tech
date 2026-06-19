@@ -1,16 +1,28 @@
 "use client";
 
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
-import { CheckCircle, Globe, Shield, TrendingUp, Zap } from "lucide-react";
+import { CheckCircle, Rocket, Shield } from "lucide-react";
 import { SectionHeader } from "./shared";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useMounted } from "@/hooks/use-mounted";
 
-const StarsBackground = dynamic(() => import("@/components/ui/stars-background"), {
-  ssr: false,
-});
+const values = [
+  {
+    icon: CheckCircle,
+    title: "Excelencia",
+    description: "Altos estándares técnicos y de diseño en cada entrega.",
+  },
+  {
+    icon: Shield,
+    title: "Transparencia",
+    description: "Comunicación abierta y honesta, sin letra pequeña.",
+  },
+  {
+    icon: Rocket,
+    title: "Innovación continua",
+    description: "Exploramos nuevas tecnologías y metodologías constantemente.",
+  },
+];
 
 export default function About() {
   const { theme, resolvedTheme } = useTheme();
@@ -23,121 +35,46 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-20 lg:py-32 relative bg-muted/30 overflow-hidden">
-      <Suspense fallback={null}>
-        <StarsBackground />
-      </Suspense>
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="about" className="py-24 lg:py-32 relative overflow-hidden">
+      <div className="container mx-auto px-4">
         <SectionHeader
-          title="Nuestra Identidad"
-          description="Conoce la historia, valores y visión que nos impulsa a transformar empresas costarricenses."
+          title="Quiénes somos"
+          description="Conocé la historia y los valores que nos impulsan a transformar empresas costarricenses."
         />
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto h-auto lg:h-[600px]">
-          {/* Logo and Company Info - Large Square */}
-          <div className="col-span-4 lg:col-span-2 row-span-2 group bg-card rounded-2xl p-8 lg:p-8 border border-border hover:border-primary/30 transition-colors duration-300 flex flex-col justify-center">
-            <div className="flex items-center justify-center mb-6">
-              <div className="w-20 h-20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                <Image src={getLogoSrc()} alt="HIKARI TECH" width={100} height={100} className="p-2" />
-              </div>
-            </div>
-            <div className="text-center space-y-3">
-              <h3 className="text-xl font-semibold font-poppins text-foreground tracking-tight group-hover:text-primary transition-colors duration-300">
-                HIKARI TECH
-              </h3>
-              <p className="text-[0.938rem] text-muted-foreground font-inter leading-relaxed">
-                Empresa costarricense especializada en soluciones tecnológicas para empresas.
-              </p>
-            </div>
-          </div>
+        <div className="max-w-4xl mx-auto space-y-14">
+          <p className="text-2xl lg:text-3xl font-poppins font-semibold text-foreground leading-snug tracking-tight text-balance text-center">
+            Ayudamos a empresas costarricenses a dejar atrás la ineficiencia con tecnología en la que pueden confiar.
+          </p>
 
-          {/* Mission - Wide Rectangle */}
-          <div className="col-span-4 row-span-1 group bg-card rounded-xl p-6 border border-border hover:border-primary/30 transition-colors duration-300 relative">
-            <div className="flex items-start gap-4 h-full">
-              <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors duration-300">
-                <Globe className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-              </div>
-              <div className="space-y-2 flex-1">
-                <h3 className="text-xl font-semibold font-poppins text-foreground tracking-tight group-hover:text-primary transition-colors duration-300">
-                  Misión
-                </h3>
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16 border-t border-border pt-12">
+            <div className="flex items-center gap-4">
+              <Image src={getLogoSrc()} alt="HIKARI TECH" width={48} height={48} />
+              <div>
+                <h3 className="font-semibold font-poppins text-foreground tracking-tight">HIKARI TECH</h3>
                 <p className="text-sm text-muted-foreground font-inter leading-relaxed">
-                  Ayudamos a empresas de Costa Rica a superar la ineficiencia mediante soluciones
-                  tecnológicas confiables.
+                  Empresa costarricense especializada en soluciones tecnológicas para empresas.
                 </p>
               </div>
             </div>
-          </div>
 
-          {/* Vision - Wide Rectangle */}
-          <div className="col-span-4 row-span-1 group bg-card rounded-xl p-6 border border-border hover:border-primary/30 transition-colors duration-300 relative">
-            <div className="flex items-start gap-4 h-full">
-              <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors duration-300">
-                <TrendingUp className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-              </div>
-              <div className="space-y-2 flex-1">
-                <h3 className="text-xl font-semibold font-poppins text-foreground tracking-tight group-hover:text-primary transition-colors duration-300">
-                  Visión
-                </h3>
-                <p className="text-sm text-muted-foreground font-inter leading-relaxed">
-                  Convertirnos en el referente en innovación tecnológica en Costa Rica, liderando la implementación de
-                  IA y tecnologías modernas.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Values */}
-          {/* Excellence */}
-          <div className="col-span-2 lg:col-span-2 row-span-1 group bg-card rounded-xl p-6 lg:p-5 border border-border hover:border-primary/30 transition-colors duration-300">
-            <div className="flex flex-col h-full justify-start pt-2">
-              <div className="flex items-center gap-2.5 mb-2">
-                <div className="w-7 h-7 bg-muted rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-300">
-                  <CheckCircle className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                </div>
-                <h4 className="text-base font-semibold font-poppins text-foreground tracking-tight group-hover:text-primary transition-colors duration-300">
-                  Excelencia
-                </h4>
-              </div>
-              <p className="text-sm font-inter text-muted-foreground leading-relaxed">
-                Altos estándares técnicos y de diseño.
+            <div>
+              <h3 className="text-base font-semibold font-poppins text-foreground tracking-tight mb-2">Visión</h3>
+              <p className="text-muted-foreground font-inter leading-relaxed">
+                Ser el referente en innovación tecnológica en Costa Rica, liderando la adopción de IA y herramientas
+                modernas sin perder el trato cercano de un equipo local.
               </p>
             </div>
           </div>
 
-          {/* Transparency */}
-          <div className="col-span-2 lg:col-span-2 row-span-1 group bg-card rounded-xl p-6 lg:p-5 border border-border hover:border-primary/30 transition-colors duration-300">
-            <div className="flex flex-col h-full justify-start pt-2">
-              <div className="flex items-center gap-2.5 mb-2">
-                <div className="w-7 h-7 bg-muted rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-300">
-                  <Shield className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                </div>
-                <h4 className="text-base font-semibold font-poppins text-foreground tracking-tight group-hover:text-primary transition-colors duration-300">
-                  Transparencia
-                </h4>
+          <div className="grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border border-t border-border pt-12">
+            {values.map((value) => (
+              <div key={value.title} className="sm:px-8 first:sm:pl-0 last:sm:pr-0 py-6 sm:py-0 space-y-2">
+                <value.icon className="w-5 h-5 text-primary" />
+                <h4 className="font-semibold font-poppins text-foreground tracking-tight">{value.title}</h4>
+                <p className="text-sm text-muted-foreground font-inter leading-relaxed">{value.description}</p>
               </div>
-              <p className="text-sm font-inter text-muted-foreground leading-relaxed">
-                Comunicación abierta y honesta.
-              </p>
-            </div>
-          </div>
-
-          {/* Innovation */}
-          <div className="col-span-4 lg:col-span-2 row-span-1 group bg-card rounded-xl p-6 lg:p-5 border border-border hover:border-primary/30 transition-colors duration-300">
-            <div className="flex flex-col h-full justify-start pt-2">
-              <div className="flex items-center gap-2.5 mb-2">
-                <div className="w-7 h-7 bg-muted rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-300">
-                  <Zap className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                </div>
-                <h4 className="text-base font-semibold font-poppins text-foreground tracking-tight group-hover:text-primary transition-colors duration-300">
-                  Innovación continua
-                </h4>
-              </div>
-              <p className="text-sm font-inter text-muted-foreground leading-relaxed">
-                Exploramos nuevas tecnologías y metodologías constantemente.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </div>
