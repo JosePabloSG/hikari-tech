@@ -41,8 +41,16 @@ export default function Solutions() {
   const handleScroll = () => {
     const scroller = scrollerRef.current;
     if (!scroller) return;
-    const index = Math.round(scroller.scrollLeft / (scroller.scrollWidth / solutions.length));
-    setActive(Math.min(solutions.length - 1, Math.max(0, index)));
+    let closest = 0;
+    let smallestDiff = Infinity;
+    Array.from(scroller.children).forEach((child, index) => {
+      const diff = Math.abs((child as HTMLElement).offsetLeft - scroller.offsetLeft - scroller.scrollLeft);
+      if (diff < smallestDiff) {
+        smallestDiff = diff;
+        closest = index;
+      }
+    });
+    setActive(closest);
   };
 
   return (
